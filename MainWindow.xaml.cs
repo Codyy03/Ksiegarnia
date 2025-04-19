@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Ksiegarnia
 {
@@ -23,49 +24,47 @@ namespace Ksiegarnia
     public partial class MainWindow : Window
     {
         public ObservableCollection<Book> allBooks { get; set; }
+        DispatcherTimer debounceTimer;
         public MainWindow()
         {
             InitializeComponent();
             allBooks = new ObservableCollection<Book>();
+            debounceTimer = new();
+            debounceTimer.Interval = TimeSpan.FromSeconds(0.9f); // opóźnienie o 2 sekunde
+            debounceTimer.Tick += DebounceTimer_Tick;
+
+        }
+        private void DebounceTimer_Tick(object sender, EventArgs e)
+        {
+            debounceTimer.Stop(); //  Zatrzymanie timera po wykonaniu operacji
+            string searchText = SearchBox.Text.ToLower();
             using (BookstoreContex context = new BookstoreContex())
             {
-                try
+                if (string.IsNullOrEmpty(searchText))
                 {
-                    var books = context.Books.ToList();
-                    foreach (var book in books)
-                    {
-                        allBooks.Add(book);
-                    }
-                    BooksList.ItemsSource = allBooks;
-                    BooksList.Visibility = allBooks.Count > 0 ? Visibility.Visible : Visibility.Hidden;
+                    BooksList.ItemsSource = new ObservableCollection<Book>();
+                    BooksList.Visibility = Visibility.Hidden;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    try
+                    {
+                        var filteredBooks = context.Books.Where(b => b.Title.ToLower().Contains(searchText)).ToList();
+                        BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
+                        if (filteredBooks.Count > 0)
+                            BooksList.Visibility = Visibility.Visible;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
-            
-            BooksList.ItemsSource = new ObservableCollection<Book>();
         }
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText = SearchBox.Text.ToLower();
-
-            if (string.IsNullOrEmpty(searchText))
-            {
-                BooksList.ItemsSource = new ObservableCollection<Book>();
-                BooksList.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-              var filteredBooks = allBooks.Where(b => b.Title.ToLower().Contains(searchText)).ToList();
-              BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
-
-              if (filteredBooks.Count > 0) 
-                BooksList.Visibility = Visibility.Visible;
-            }
-
+            debounceTimer.Stop();
+            debounceTimer.Start();
         }
     }
 
