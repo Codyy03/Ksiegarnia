@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,13 +26,25 @@ namespace Ksiegarnia
         public MainWindow()
         {
             InitializeComponent();
-            allBooks = new ObservableCollection<Book>
+            allBooks = new ObservableCollection<Book>();
+            using (BookstoreContex context = new BookstoreContex())
             {
-                new Book {title = "Wiedzmin"},
-                new Book {title = "Hobbit"},
-                new Book {title = "Gra o tron"}
-            };
-
+                try
+                {
+                    var books = context.Books.ToList();
+                    foreach (var book in books)
+                    {
+                        allBooks.Add(book);
+                    }
+                    BooksList.ItemsSource = allBooks;
+                    BooksList.Visibility = allBooks.Count > 0 ? Visibility.Visible : Visibility.Hidden;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            
             BooksList.ItemsSource = new ObservableCollection<Book>();
         }
 
@@ -46,7 +59,7 @@ namespace Ksiegarnia
             }
             else
             {
-              var filteredBooks = allBooks.Where(b => b.title.ToLower().Contains(searchText)).ToList();
+              var filteredBooks = allBooks.Where(b => b.Title.ToLower().Contains(searchText)).ToList();
               BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
 
               if (filteredBooks.Count > 0) 
@@ -56,9 +69,5 @@ namespace Ksiegarnia
         }
     }
 
-    public class Book {
-        public string title { get; set; }
-        
 
-    }
 }
