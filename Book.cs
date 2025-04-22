@@ -25,6 +25,8 @@ namespace Ksiegarnia
         public int Pages { get; set; }
         [Column("nazwa_obrazu")]
         public string CoverName {  get; set; }
+        [Column("ID_Autora")]
+        public int AuthorID {  get; set; }
 
         public string CoverPath
         {
@@ -35,6 +37,7 @@ namespace Ksiegarnia
                 return Path.Combine(basePath, CoverName);
             }
         }
+        public Author Author { get; set; }
         public ICollection<BookAuthor> BookAuthors { get; set; }
 
     }

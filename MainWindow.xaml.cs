@@ -3,17 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Ksiegarnia
@@ -33,30 +24,63 @@ namespace Ksiegarnia
             debounceTimer.Interval = TimeSpan.FromSeconds(0.9f); // opóźnienie o 2 sekunde
             debounceTimer.Tick += DebounceTimer_Tick;
 
+            using (BookstoreContex contex = new BookstoreContex())
+            {
+                var books = contex.Books.ToList();
+
+                var randomBooks = new ObservableCollection<Book>();
+                Random random = new Random();
+                for(int i=0; i<3; i++)
+                {
+                    int randomBookIndex = random.Next(0, books.Count());
+                    randomBooks.Add(books[randomBookIndex]);
+                    books.RemoveAt(randomBookIndex);
+                    
+                }
+                RandomBooks.ItemsSource = new ObservableCollection<Book>(randomBooks);
+            }
+
         }
         private void DebounceTimer_Tick(object sender, EventArgs e)
         {
-            debounceTimer.Stop(); //  Zatrzymanie timera po wykonaniu operacji
-            string searchText = SearchBox.Text.ToLower();
+            debounceTimer.Stop();
+            string searchText = SearchBox.Text.Trim().ToLower();
+
             using (BookstoreContex context = new BookstoreContex())
             {
                 if (string.IsNullOrEmpty(searchText))
                 {
-                    BooksList.ItemsSource = new ObservableCollection<Book>();
+                    AdvertisementImage.Visibility = Visibility.Visible;
+                    BooksList.ItemsSource = null;
                     BooksList.Visibility = Visibility.Hidden;
                 }
                 else
                 {
                     try
                     {
-                        var filteredBooks = context.Books.Where(b => b.Title.ToLower().Contains(searchText)).ToList();
-                        BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
-                        if (filteredBooks.Count > 0)
+                        var filteredBooks = context.Books
+                            .Include(b => b.Author)
+                            .Where(b => b.Title.ToLower().Contains(searchText))
+                            .ToList();
+
+                        if (filteredBooks.Any())
+                        {
+                            BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
                             BooksList.Visibility = Visibility.Visible;
+
+                            // Ukrywamy reklamę, gdy pojawiają się wyniki wyszukiwania
+                            AdvertisementImage.Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                            BooksList.ItemsSource = null;
+                            BooksList.Visibility = Visibility.Hidden;
+                            AdvertisementImage.Visibility = Visibility.Visible;
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.ToString());
+                        MessageBox.Show("Błąd podczas wyszukiwania: " + ex.Message);
                     }
                 }
             }
@@ -66,7 +90,16 @@ namespace Ksiegarnia
             debounceTimer.Stop();
             debounceTimer.Start();
         }
+
+        private void BooksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedBook = BooksList.SelectedItem as Book;
+
+            if (selectedBook != null)
+            {
+                var detailsWindow = new BookDetailsWindow(selectedBook);
+                detailsWindow.Show(); 
+            }
+        }
     }
-
-
 }

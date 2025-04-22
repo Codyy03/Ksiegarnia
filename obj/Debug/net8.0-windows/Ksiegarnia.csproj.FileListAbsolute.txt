@@ -36,3 +36,7 @@ C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\refint\Ksiegarnia.dll
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.pdb
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.genruntimeconfig.cache
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\ref\Ksiegarnia.dll
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\BookDetailsWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\BookDetailsWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Styles.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\App.baml

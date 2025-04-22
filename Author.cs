@@ -21,5 +21,7 @@ namespace Ksiegarnia
         public string Biography { get; set; }
 
         public ICollection<BookAuthor> BookAuthors { get; set; }
+
+        public string FullName => $"{Name} {Surname}";
     }
 }

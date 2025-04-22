@@ -21,6 +21,11 @@ namespace Ksiegarnia
         {
             modelBuilder.Entity<BookAuthor>()
                 .HasKey(ba => new { ba.BookID, ba.AuthorID }); // Klucz złożony
+
+            modelBuilder.Entity<Book>()
+            .HasOne(b => b.Author)
+            .WithMany()
+            .HasForeignKey("AuthorID");
         }
     }
 }
