@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Ksiegarnia.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="700" Width="1000">
+        Title="MainWindow" Height="950" Width="1230"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -11,8 +12,8 @@
 
         <!-- Row 0: Powitanie i wyszukiwarka -->
         <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" Width="980">
-            <TextBlock Text="Witaj, Jan!" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Left" />
-            <TextBlock Text="Wyszukaj książkę..." Style="{StaticResource PlaceholderTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="Witaj, Jan!" Style="{StaticResource HeaderTextStyle}" HorizontalAlignment="Center" Margin="10,20,10,22" FontFamily="Britannic Bold" VerticalAlignment="Center" FontSize="30" />
+            <TextBlock Text="Wyszukaj książkę..." Style="{StaticResource PlaceholderTextStyle}" HorizontalAlignment="Left" Margin="100,0,0,5" />
             <TextBox x:Name="SearchBox" Style="{StaticResource SearchBoxStyle}" TextChanged="SearchBox_TextChanged" />
         </StackPanel>
 
@@ -20,9 +21,7 @@
         <Grid Grid.Row="1">
             <Image x:Name="AdvertisementImage" Source="C:\Users\sebas\Desktop\Ksiegarnia\reklama.png"
                    Stretch="Fill" HorizontalAlignment="Center" Width="600" Height="250" Margin="0,25,0,0" />
-            <ListView x:Name="BooksList" Visibility="Hidden" HorizontalAlignment="Stretch"
-                      VerticalAlignment="Top" Margin="0,25,0,0" SelectionChanged="BooksList_SelectionChanged"
-                      Style="{StaticResource BooksListViewStyle}">
+            <ListView x:Name="BooksList" Visibility="Hidden" Style="{StaticResource BooksListViewStyle}" SelectionChanged="BooksList_SelectionChanged">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center" />
@@ -30,11 +29,13 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Style="{StaticResource BookItemStyle}">
-                            <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" Margin="5" TextAlignment="Center" />
-                            <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
-                            <TextBlock Text="{Binding Author.FullName}" FontSize="14" FontWeight="Normal" Margin="5" TextAlignment="Center" FontStyle="Italic" />
-                        </StackPanel>
+                        <Border Style="{StaticResource BookItemStyle}">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource BookTitleStyle}" />
+                                <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
+                                <TextBlock Text="{Binding Author.FullName}" Style="{StaticResource AuthorTextStyle}" />
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -46,7 +47,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="Zobacz wybrane produkty" Style="{StaticResource HeaderTextStyle}" Grid.Row="0" Margin="10,10,10,10" />
+            <TextBlock Text="Zobacz wybrane produkty" Style="{StaticResource HeaderTextStyle}" Grid.Row="0" />
             <ListView x:Name="RandomBooks" Grid.Row="1" Style="{StaticResource BooksListViewStyle}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -55,11 +56,13 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Style="{StaticResource BookItemStyle}">
-                            <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" Margin="5" TextAlignment="Center" />
-                            <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
-                            <TextBlock Text="{Binding Author.FullName}" FontSize="14" FontWeight="Normal" Margin="5" TextAlignment="Center" FontStyle="Italic" />
-                        </StackPanel>
+                        <Border Style="{StaticResource BookItemStyle}">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource BookTitleStyle}" />
+                                <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
+                                <TextBlock Text="{Binding Author.FullName}" Style="{StaticResource AuthorTextStyle}" />
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

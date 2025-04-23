@@ -22,7 +22,15 @@ namespace Ksiegarnia
         public BookDetailsWindow(Book book)
         {
             InitializeComponent();
-            book_info.Text = $"{book.Title} \n {book.Genre} \n {book.Price} \n {book.Pages} \n {book.Author} {book.Description}";
+            book_title.Text = book.Title;
+            book_author.Text = book.Author.FullName;
+            book_price.Text = $"{book.Price} zł";
+            book_tag.Text = book.Genre;
+            book_description.Text = book.Description;
+            if (!string.IsNullOrEmpty(book.CoverPath))
+            {
+                BookCover.Source = new BitmapImage(new Uri(book.CoverPath));
+            }
 
         }
        
