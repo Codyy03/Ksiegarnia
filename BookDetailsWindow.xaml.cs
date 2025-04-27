@@ -19,20 +19,33 @@ namespace Ksiegarnia
     /// </summary>
     public partial class BookDetailsWindow : Window
     {
+        Book book = new Book();
         public BookDetailsWindow(Book book)
         {
             InitializeComponent();
+            itemsInCartCounter.Content = ShoppingCart.itemsCounter.ToString();
+            this.book = book;
             book_title.Text = book.Title;
             book_author.Text = book.Author.FullName;
             book_price.Text = $"{book.Price} zł";
-            book_tag.Text = book.Genre;
+            book_tag.Text =$"Gatunek: {book.Genre}";
             book_description.Text = book.Description;
+            book_pages.Text =$"Liczba stron: {book.Pages.ToString()}";
+
             if (!string.IsNullOrEmpty(book.CoverPath))
             {
                 BookCover.Source = new BitmapImage(new Uri(book.CoverPath));
             }
 
         }
-       
+
+        private void add_to_card_button_Click(object sender, RoutedEventArgs e)
+        {
+            ShoppingCart.itemsCounter++;
+            ShoppingCart.books.Add(book);
+            itemsInCartCounter.Content = ShoppingCart.itemsCounter.ToString();
+            ShoppingCart.PrintBooks();
+
+        }
     }
 }
