@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\bookdetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:bookdetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -23,10 +43,6 @@
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\bookstorecontex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:bookstorecontex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,20 +55,12 @@
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBC97696-0474-4C45-A8A9-BD98D24DB380}|Ksiegarnia.csproj|c:\\users\\sebas\\desktop\\ksiegarnia\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,7 +86,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T15:11:40.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-28T15:10:53.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "BookDetailsWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\BookDetailsWindow.xaml.cs",
               "RelativeDocumentMoniker": "BookDetailsWindow.xaml.cs",
@@ -86,36 +120,35 @@
               "RelativeToolTip": "BookDetailsWindow.xaml.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAgwBwAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T19:42:26.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T19:42:26.211Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "BookDetailsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\BookDetailsWindow.xaml",
               "RelativeDocumentMoniker": "BookDetailsWindow.xaml",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\BookDetailsWindow.xaml",
               "RelativeToolTip": "BookDetailsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-21T19:42:17.066Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T19:42:17.066Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAMwDUAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T19:22:35.209Z"
+              "WhenOpened": "2025-04-13T19:22:35.209Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "BookstoreContex.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\BookstoreContex.cs",
               "RelativeDocumentMoniker": "BookstoreContex.cs",
@@ -127,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "BookAuthor.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\BookAuthor.cs",
               "RelativeDocumentMoniker": "BookAuthor.cs",
@@ -135,12 +168,11 @@
               "RelativeToolTip": "BookAuthor.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T19:28:58.428Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T19:28:58.428Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Book.cs",
               "RelativeDocumentMoniker": "Book.cs",
@@ -152,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Customer.cs",
               "RelativeDocumentMoniker": "Customer.cs",
@@ -164,19 +196,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Styles.xaml",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Styles.xaml",
               "RelativeDocumentMoniker": "Styles.xaml",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Styles.xaml",
               "RelativeToolTip": "Styles.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-21T20:17:00.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T20:17:00.132Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Orders.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Orders.cs",
               "RelativeDocumentMoniker": "Orders.cs",
@@ -188,19 +219,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-13T19:22:39.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T19:22:39.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "OrdersBooks.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\OrdersBooks.cs",
               "RelativeDocumentMoniker": "OrdersBooks.cs",
@@ -212,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -224,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Author.cs",
               "RelativeDocumentMoniker": "Author.cs",
@@ -236,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "Address.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\Address.cs",
               "RelativeDocumentMoniker": "Address.cs",
@@ -244,11 +274,12 @@
               "RelativeToolTip": "Address.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T19:14:12.733Z"
+              "WhenOpened": "2025-04-18T19:14:12.733Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\sebas\\Desktop\\Ksiegarnia\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "AssemblyInfo.cs",
@@ -256,7 +287,8 @@
               "RelativeToolTip": "AssemblyInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T19:39:00.507Z"
+              "WhenOpened": "2025-04-18T19:39:00.507Z",
+              "EditorCaption": ""
             }
           ]
         }
