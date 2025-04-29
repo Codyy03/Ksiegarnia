@@ -62,7 +62,7 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#F0F8FF" />
-                <Setter Property="Cursor" Value="Hand" />
+                
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -134,7 +134,7 @@
         <Setter Property="Width" Value="450" />
         <Setter Property="Height" Value="500" />
         <Setter Property="Margin" Value="50,0,200,0" />
-        <Setter Property="Stretch" Value="UniformToFill" />
+        <Setter Property="Stretch" Value="Uniform" />
     </Style>
 
     <!-- Styl dla gatunku -->
@@ -172,13 +172,92 @@
                             <TextBlock Text="{TemplateBinding Content}"
                        Foreground="White"
                        FontSize="12" FontWeight="Bold"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <!-- Styl kontenera na dodatkowe informacje -->
+    <Style x:Key="AdditionalInfoContainerStyle" TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <!-- Gradientowe tło od jasnego szarego do białego -->
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFFAFAFA" Offset="0.0" />
+                    <GradientStop Color="#FFE0E0E0" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.2"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
+    <!-- Nowy styl dla tekstu w dodatkowych informacjach -->
+    <Style x:Key="AdditionalInfoTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <!-- Styl dla listy produktów w koszyku -->
+    <Style x:Key="CartListViewStyle" TargetType="ListView">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <!-- Styl dla pojedynczego elementu koszyka -->
+    <Style x:Key="CartItemStyle" TargetType="Border">
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="4" Color="#AAAAAA" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Styl dla nagłówka panelu podsumowania -->
+    <Style x:Key="CartSummaryHeaderStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <Setter Property="Margin" Value="0,0,0,15"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Styl dla tekstu łącznej wartości (total price) -->
+    <Style x:Key="CartTotalPriceStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Green"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+    </Style>
+
+    <!-- Styl dla kontenera panelu podsumowania -->
+    <Style x:Key="CartSummaryContainerStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="#F0F0F0"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <!-- Styl dla przycisków akcji w koszyku -->
+    <Style x:Key="CartActionButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#FF5722"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <DropShadowEffect x:Key="DropShadowEffect" Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.2"/>
 
 </ResourceDictionary>

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.ComponentModel;
 namespace Ksiegarnia
 {
     [Table("Ksiazki")]
-    public class Book
+    public class Book 
     {
         public int ID {  get; set; }
         [Column("tytul")]
@@ -32,11 +33,20 @@ namespace Ksiegarnia
         {
             get
             {
-                // pobieranie lokalnej sciezki do folderu z okładkami
                 string basePath = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "covers");
                 return Path.Combine(basePath, CoverName);
             }
         }
+        
+        public string PriceWithZl
+        {
+            get
+            {
+                return $"{Price.ToString()} zł";
+            }
+        }
+
+
         public Author Author { get; set; }
         public ICollection<BookAuthor> BookAuthors { get; set; }
 

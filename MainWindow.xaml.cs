@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,10 +23,11 @@ namespace Ksiegarnia
             InitializeComponent();
             allBooks = new ObservableCollection<Book>();
             debounceTimer = new();
-            debounceTimer.Interval = TimeSpan.FromSeconds(0.9f); // opóźnienie o 2 sekunde
+            debounceTimer.Interval = TimeSpan.FromSeconds(1f); // opóźnienie o 1 sekunde
             debounceTimer.Tick += DebounceTimer_Tick;
+      
 
-            using (BookstoreContex contex = new BookstoreContex())
+            using (BookstoreContex contex = new BookstoreContex(ContextOptions()))
             {
                 var books = contex.Books.ToList();
 
@@ -45,8 +48,8 @@ namespace Ksiegarnia
         {
             debounceTimer.Stop();
             string searchText = SearchBox.Text.Trim().ToLower();
-
-            using (BookstoreContex context = new BookstoreContex())
+           
+            using (BookstoreContex context = new BookstoreContex(ContextOptions()))
             {
                 if (string.IsNullOrEmpty(searchText))
                 {
@@ -98,8 +101,29 @@ namespace Ksiegarnia
             if (selectedBook != null)
             {
                 var detailsWindow = new BookDetailsWindow(selectedBook);
-                detailsWindow.Show(); 
+                detailsWindow.Show();
+
+                this.Close();
             }
         }
+        private DbContextOptions<BookstoreContex> ContextOptions()
+        {
+            string path = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName);
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(path)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .Build();
+
+            var connectionString = configurationBuilder.GetConnectionString("DefaultConnection");
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new Exception("Connection string 'DefaultConnection' is null or empty.");
+            }
+
+            var optionsBuilder = new DbContextOptionsBuilder<BookstoreContex>();
+            optionsBuilder.UseNpgsql(connectionString); // Konfiguracja połączenia do PostgreSQL
+            return optionsBuilder.Options;
+        }
+
     }
 }

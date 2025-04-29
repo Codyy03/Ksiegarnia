@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace Ksiegarnia
+{
+    public static class ShoppingCart
+    {
+        public static int itemsCounter = 0;
+
+        public static ObservableCollection<Book> books = new ObservableCollection<Book>();
+
+        public static void PrintBooks()
+        {
+            foreach (Book book in books)
+            {
+                MessageBox.Show(book.Title);
+            }
+        }
+    }
+
+}
+
