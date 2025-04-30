@@ -89,7 +89,7 @@
                    Grid.Row="0" />
                 <ListView x:Name="RandomBooks"
                   Grid.Row="1"
-                  Style="{StaticResource BooksListViewStyle}">
+                  Style="{StaticResource BooksListViewStyle}" SelectionChanged="RandomBooks_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center" />

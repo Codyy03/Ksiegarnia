@@ -17,7 +17,9 @@ namespace Ksiegarnia
     public partial class MainWindow : Window
     {
         public ObservableCollection<Book> allBooks { get; set; }
+        ObservableCollection<Book> randomBooks = new ObservableCollection<Book>();
         DispatcherTimer debounceTimer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,9 +31,9 @@ namespace Ksiegarnia
 
             using (BookstoreContex contex = new BookstoreContex(ContextOptions()))
             {
-                var books = contex.Books.ToList();
+                var books = contex.Books.Include(b => b.Author).ToList();
 
-                var randomBooks = new ObservableCollection<Book>();
+
                 Random random = new Random();
                 for(int i=0; i<3; i++)
                 {
@@ -96,15 +98,7 @@ namespace Ksiegarnia
 
         private void BooksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedBook = BooksList.SelectedItem as Book;
-
-            if (selectedBook != null)
-            {
-                var detailsWindow = new BookDetailsWindow(selectedBook);
-                detailsWindow.Show();
-
-                this.Close();
-            }
+            SelectedBook(BooksList);
         }
         private DbContextOptions<BookstoreContex> ContextOptions()
         {
@@ -125,5 +119,21 @@ namespace Ksiegarnia
             return optionsBuilder.Options;
         }
 
+        private void RandomBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedBook(RandomBooks);
+        }
+
+        private void SelectedBook(ListView listView)
+        {
+            Book selectedBook = listView.SelectedItem as Book;
+            if (selectedBook != null)
+            {
+                var detailsWindow = new BookDetailsWindow(selectedBook);
+                detailsWindow.Show();
+
+                this.Close();
+            }
+        }
     }
 }
