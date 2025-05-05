@@ -19,11 +19,9 @@ C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Npgsql.dll
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.csproj.AssemblyReference.cache
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia_MarkupCompile.cache
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia_MarkupCompile.lref
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\MainWindow.baml
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.g.resources
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.AssemblyInfoInputs.cache
@@ -36,8 +34,6 @@ C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\refint\Ksiegarnia.dll
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.pdb
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Ksiegarnia.genruntimeconfig.cache
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\ref\Ksiegarnia.dll
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\BookDetailsWindow.g.cs
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\BookDetailsWindow.baml
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Styles.baml
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\App.baml
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Azure.Core.dll
@@ -157,5 +153,10 @@ C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Microsoft.Extensions.
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\sebas\Desktop\Ksiegarnia\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\ShoopingCartWindow.g.cs
-C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\ShoopingCartWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\BookDetailsWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\MainWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\ShoopingCartWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\BookDetailsWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\MainWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\ShoopingCartWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

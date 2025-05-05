@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:local="clr-namespace:Ksiegarnia.MarkupExtensions">
+    
     <!-- Styl dla nagłówków -->
     <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="28" />
@@ -127,8 +128,29 @@
         <Setter Property="Margin" Value="5,0,10,10" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" 
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Po najechaniu zmień tło na ciemniejszy odcień -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#E64A19"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    
+
+
+
     <!-- Styl dla okładki książki -->
     <Style x:Key="BookCoverStyle" TargetType="Image">
         <Setter Property="Width" Value="450" />
@@ -147,8 +169,7 @@
         <Setter Property="Margin" Value="5,0,5,10" />
     </Style>
 
-    <Style x:Key="CartButtonStyle" TargetType="Button">
-        <!-- Ustal rozmiar przycisku – szerokość i wysokość muszą być równe, żeby uzyskać efekt okrągłego przycisku -->
+    <Style x:Key="CartButtonStyle" TargetType="Button" >
         <Setter Property="Width" Value="74"/>
         <Setter Property="Height" Value="74"/>
         <Setter Property="Background" Value="#FF5722"/>
@@ -158,11 +179,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <!-- Główna powierzchnia przycisku -->
-                        <Border Background="{TemplateBinding Background}" CornerRadius="37">
-                            <Image Source="C:\Users\sebas\Desktop\Ksiegarnia\shoping_card.png"
+                        <!-- Główna powierzchnia przycisku z ikoną -->
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="37">
+                            <Image Source="{local:DynamicImageSource shoping_card.png}"
                    Stretch="Uniform"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="54"/>
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Height="54" Width="54"/>
                         </Border>
                         <!-- Badge z liczbą produktów – nakładka w prawym górnym rogu -->
                         <Border Background="#E53935" CornerRadius="10"
@@ -175,10 +197,17 @@
                        HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#E64A19"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+
     <!-- Styl kontenera na dodatkowe informacje -->
     <Style x:Key="AdditionalInfoContainerStyle" TargetType="Border">
         <Setter Property="Background">
@@ -252,12 +281,61 @@
         <Setter Property="Background" Value="#F0F0F0"/>
         <Setter Property="Margin" Value="10"/>
     </Style>
+    <DropShadowEffect x:Key="DropShadowEffect" Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.2"/>
 
-    <!-- Styl dla przycisków akcji w koszyku -->
     <Style x:Key="CartActionButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="#FF5722"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#E64A19"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    <DropShadowEffect x:Key="DropShadowEffect" Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.2"/>
+
+
+
+    <Style x:Key="BuyButtonStyle" TargetType="Button" >
+        <Setter Property="Background" Value="#007ACC"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <!-- Po najechaniu zmień tło na ciemniejszy odcień niebieskiego -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#005F99"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

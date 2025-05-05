@@ -140,7 +140,7 @@ namespace Ksiegarnia {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Ksiegarnia;V1.0.0.0;component/bookdetailswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Ksiegarnia;component/bookdetailswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\BookDetailsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

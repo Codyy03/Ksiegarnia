@@ -7,18 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="BookDetailsWindow.xaml.cs">
+    <Compile Update="Windows\BookDetailsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ShoopingCartWindow.xaml.cs">
+    <Compile Update="Windows\ShoopingCartWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ShoopingCartWindow.xaml">
+    <Page Update="Windows\ShoopingCartWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

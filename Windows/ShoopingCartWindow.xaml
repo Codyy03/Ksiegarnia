@@ -1,0 +1,108 @@
+﻿<Window x:Class="Ksiegarnia.ShoopingCartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Ksiegarnia.MarkupExtensions"
+        
+        Title="ShoopingCartWindow" Height="850" Width="1100">
+    <Window.Resources>
+        <!-- Efekt cienia dla elementów – możesz dostosować jego właściwości -->
+        <DropShadowEffect x:Key="DefaultDropShadowEffect" Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <!-- Ustawienie dwukolumnowego podziału -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="400" />
+            <ColumnDefinition Width="300" MinWidth="250" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Lista produktów w koszyku (bez zewnętrznego ScrollViewer) -->
+        <ListView x:Name="BooksInShoopingCart"
+              Grid.Column="0"
+              Style="{StaticResource CartListViewStyle}"
+              Margin="10"
+              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+              VirtualizingPanel.IsVirtualizing="False">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <!-- WrapPanel przy orientacji poziomej, który zawija elementy do kolejnych wierszy -->
+                    <WrapPanel Orientation="Horizontal"
+                     IsItemsHost="True"
+                     ItemWidth="150"
+                     ItemHeight="Auto"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource CartItemStyle}" Margin="5" Effect="{StaticResource DefaultDropShadowEffect}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <!-- Tytuł – skracany elipsą, z podpowiedzią pełnego tytułu -->
+                            <TextBlock Text="{Binding Title}"
+                         FontSize="16"
+                         FontWeight="Bold"
+                         TextAlignment="Center"
+                         Margin="0,0,0,5"
+                         TextTrimming="CharacterEllipsis"
+                         ToolTip="{Binding Title}"/>
+                            <!-- Okładka książki -->
+                            <Image Source="{Binding CoverPath}"
+                     Width="120" Height="160"
+                     Stretch="Uniform"
+                     Margin="0,0,0,5"/>
+                            <!-- Autor -->
+                            <TextBlock Text="{Binding Author.FullName}"
+                         FontStyle="Italic"
+                         TextAlignment="Center"
+                         Margin="0,0,0,5"/>
+                            <!-- Cena, wyświetlana jako "Cena: 40 zł" itp. -->
+                            <TextBlock Text="{Binding PriceWithZl}"
+                         FontSize="16"
+                         Foreground="Green"
+                         TextAlignment="Center"
+                         Margin="0,0,0,5"/>
+                            <Button Content="Usuń"
+                            Margin="0,5,0,0"
+                            Click="RemoveButton_Click"
+                            Background="#FF5722"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Cursor="Hand"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Panel podsumowania zamówienia -->
+        <Border Grid.Column="1"
+            CornerRadius="10"
+            Margin="10"
+            Padding="20"
+            Background="White"
+            BorderBrush="#E0E0E0"
+            BorderThickness="1"
+            Effect="{StaticResource DefaultDropShadowEffect}">
+            <StackPanel>
+                <TextBlock Text="Podsumowanie zamówienia"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="#333333"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
+                <Separator Margin="0,0,0,10" Background="#CCCCCC" Height="1"/>
+                <TextBlock x:Name="TotalPrice" Text="0"
+                   FontSize="15"
+                   FontWeight="Bold"
+                   Foreground="Green"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+                <TextBlock x:Name="delivery" Text="Dostawa od 10 zł"
+                   FontSize="16"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+                <Button Content="Wybierz metodę dostawy"
+                Style="{StaticResource CartActionButtonStyle}" Margin="0,0,0,10"/>
+                <Button Content="Kup" Style="{StaticResource BuyButtonStyle}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

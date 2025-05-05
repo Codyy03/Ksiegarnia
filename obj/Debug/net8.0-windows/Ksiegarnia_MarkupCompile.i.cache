@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\sebas\Desktop\Ksiegarnia\App.xaml
-4132446447
+4138145780
 
-171188486699
+18-1111356564
 236-608404589
-BookDetailsWindow.xaml;MainWindow.xaml;ShoopingCartWindow.xaml;Styles.xaml;
+Styles.xaml;Windows\BookDetailsWindow.xaml;Windows\MainWindow.xaml;Windows\ShoopingCartWindow.xaml;
 
-False
+True
 
