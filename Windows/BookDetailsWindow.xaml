@@ -12,12 +12,26 @@
             </Grid.RowDefinitions>
 
             <!-- Pasek górny (nagłówek z przyciskiem koszyka) -->
-            <StackPanel Background="#FF383838" VerticalAlignment="Top" Height="66">
+            <StackPanel VerticalAlignment="Top" Height="66">
+                <StackPanel.Background>
+                    <!-- Gradient od ciemnoszarego do jeszcze ciemniejszego -->
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#FF2C2C2C" Offset="0"/>
+                        <GradientStop Color="#FF1F1F1F" Offset="1"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+
                 <StackPanel Width="182" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5,25,0">
                     <!-- Przyciski koszyka z użyciem CartButtonStyle -->
-                    <Button x:Name="itemsInCartCounter" Style="{StaticResource CartButtonStyle}" Content="0" Height="55" Width="61" Click="itemsInCartCounter_Click" />
+                    <Button x:Name="itemsInCartCounter"
+            Style="{StaticResource CartButtonStyle}"
+            Content="0"
+            Height="55"
+            Width="61"
+            Click="itemsInCartCounter_Click" />
                 </StackPanel>
             </StackPanel>
+
 
             <!-- Główna zawartość – obszar z okładką i szczegółami – zachowuje dotychczasowy układ -->
             <StackPanel Margin="0,70,0,50" Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2" Width="1226">
