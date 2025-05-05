@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Ksiegarnia.Entities;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Ksiegarnia
 {
@@ -44,15 +45,18 @@ namespace Ksiegarnia
         {
             ShoppingCart.itemsCounter++;
             ShoppingCart.books.Add(book);
-            itemsInCartCounter.Content = ShoppingCart.itemsCounter.ToString();
             MessageBox.Show($"Dodano {book.Title} do koszyka");
+            ShoppingCart.AddBookToCart(itemsInCartCounter);
 
         }
 
         private void itemsInCartCounter_Click(object sender, RoutedEventArgs e)
         {
-            ShoopingCartWindow shoopingCartWindow = new ShoopingCartWindow();
-            shoopingCartWindow.Show();
+            ShoppingCart.ChangeWindowToCart();
+        }
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void BackToSearch_Click(object sender, RoutedEventArgs e)

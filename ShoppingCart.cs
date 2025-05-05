@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using Ksiegarnia.Entities;
 
 namespace Ksiegarnia
@@ -15,12 +16,14 @@ namespace Ksiegarnia
 
         public static ObservableCollection<Book> books = new ObservableCollection<Book>();
 
-        public static void PrintBooks()
+        public static void AddBookToCart(Button itemsCounterButton)
         {
-            foreach (Book book in books)
-            {
-                MessageBox.Show(book.Title);
-            }
+            itemsCounterButton.Content = itemsCounter.ToString();
+        }
+        public static void ChangeWindowToCart()
+        {
+            ShoopingCartWindow shoopingCartWindow = new ShoopingCartWindow();
+            shoopingCartWindow.Show();
         }
     }
 

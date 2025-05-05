@@ -28,10 +28,7 @@ namespace Ksiegarnia.MarkupExtensions
                 return null;
             }
 
-            string path = Path.Combine(
-    Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-    "Images");
-            MessageBox.Show($"Ścieżka do obrazu: {path}"); // Debugowanie
+            string path = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "Images");
 
             string fullPath = Path.Combine(path, FileName);
 

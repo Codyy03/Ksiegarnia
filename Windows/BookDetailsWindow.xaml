@@ -2,36 +2,55 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="BookDetailsWindow" Height="850" Width="1100"
-        WindowStartupLocation="Manual">
+        WindowStartupLocation="Manual" >
     <!-- Opakowanie całości w ScrollViewer umożliwia przewijanie poziome i pionowe -->
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
+        <!-- Dodajemy MinWidth, aby zawartość nie kurczyła się poniżej określonej wartości -->
+        <Grid MinWidth="1226">
             <Grid.RowDefinitions>
                 <RowDefinition Height="373*"/>
                 <RowDefinition Height="94*"/>
             </Grid.RowDefinitions>
 
-            <!-- Pasek górny (nagłówek z przyciskiem koszyka) -->
-            <StackPanel VerticalAlignment="Top" Height="66">
+            <!-- Row 0: Pasek nawigacyjny -->
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="58">
                 <StackPanel.Background>
-                    <!-- Gradient od ciemnoszarego do jeszcze ciemniejszego -->
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#FF2C2C2C" Offset="0"/>
                         <GradientStop Color="#FF1F1F1F" Offset="1"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
 
-                <StackPanel Width="182" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5,25,0">
-                    <!-- Przyciski koszyka z użyciem CartButtonStyle -->
-                    <Button x:Name="itemsInCartCounter"
-            Style="{StaticResource CartButtonStyle}"
-            Content="0"
-            Height="55"
-            Width="61"
-            Click="itemsInCartCounter_Click" />
-                </StackPanel>
-            </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!-- Lewa kolumna zajmująca dostępne miejsce -->
+                        <ColumnDefinition Width="*" />
+                        <!-- Prawa kolumna dopasowana do zawartości -->
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
+                    <!-- Po lewej: przycisk użytkownika -->
+                    <Button Content="Witaj, Jan!"
+                            Style="{StaticResource UserButtonStyle}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0"
+                            Grid.Column="0"
+                            Click="UserButton_Click"/>
+
+                    <!-- Po prawej: przycisk koszyka -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" >
+                        <Button x:Name="itemsInCartCounter"
+                                Style="{StaticResource CartButtonStyle}"
+                                Content="0"
+                                Height="50"
+                                Width="56"
+                                Margin="0,5,50,5"
+                                Cursor="Hand"
+                                Click="itemsInCartCounter_Click"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
 
             <!-- Główna zawartość – obszar z okładką i szczegółami – zachowuje dotychczasowy układ -->
             <StackPanel Margin="0,70,0,50" Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="2" Width="1226">
@@ -46,20 +65,20 @@
                     <Border Style="{StaticResource AdditionalInfoContainerStyle}" Margin="10,75,10,10">
                         <StackPanel>
                             <TextBlock Text="Dodatkowe szczegóły" 
-                         TextAlignment="Center" 
-                         FontSize="25" 
-                         FontWeight="Bold"
-                         Foreground="#333333" 
-                         Margin="0,0,0,10"/>
+                                       TextAlignment="Center" 
+                                       FontSize="25" 
+                                       FontWeight="Bold"
+                                       Foreground="#333333" 
+                                       Margin="0,0,0,10"/>
                             <TextBlock x:Name="book_tag" 
-                         Text="Gatunek: Fantasy" 
-                         Style="{StaticResource AdditionalInfoTextStyle}" />
+                                       Text="Gatunek: Fantasy" 
+                                       Style="{StaticResource AdditionalInfoTextStyle}" />
                             <TextBlock x:Name="book_language" 
-                         Text="Język: Polski" 
-                         Style="{StaticResource AdditionalInfoTextStyle}" />
+                                       Text="Język: Polski" 
+                                       Style="{StaticResource AdditionalInfoTextStyle}" />
                             <TextBlock x:Name="book_pages" 
-                         Text="Liczba stron: 512" 
-                         Style="{StaticResource AdditionalInfoTextStyle}" />
+                                       Text="Liczba stron: 512" 
+                                       Style="{StaticResource AdditionalInfoTextStyle}" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -68,9 +87,8 @@
             <!-- Sekcja opisu produktu -->
             <StackPanel Margin="0,590,675,0">
                 <TextBlock Text="Opis produktu" TextAlignment="Center" FontSize="25" FontWeight="Bold"/>
-                <TextBlock x:Name="book_description" Text="Opis produktu" TextAlignment="Center" FontSize="18" Height="88" Cursor="Hand"/>
+                <TextBlock x:Name="book_description" Text="Opis produktu" TextAlignment="Center" FontSize="18" Height="88" />
                 <Button x:Name="BackToSearch" Content="Powrót" Style="{StaticResource AddToCartButtonStyle}" HorizontalAlignment="Left" Width="185" Click="BackToSearch_Click" />
-
             </StackPanel>
         </Grid>
     </ScrollViewer>

@@ -45,7 +45,7 @@ namespace Ksiegarnia
                 }
                 RandomBooks.ItemsSource = new ObservableCollection<Book>(randomBooks);
             }
-
+            ShoppingCart.AddBookToCart(itemsInCartCounter);
         }
         private void DebounceTimer_Tick(object sender, EventArgs e)
         {
@@ -135,6 +135,15 @@ namespace Ksiegarnia
 
                 this.Close();
             }
+        }
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+   
+        }
+
+        private void itemsInCartCounter_Click(object sender, RoutedEventArgs e)
+        {
+            ShoppingCart.ChangeWindowToCart();
         }
     }
 }
