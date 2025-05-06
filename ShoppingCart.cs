@@ -19,6 +19,7 @@ namespace Ksiegarnia
         public static void AddBookToCart(Button itemsCounterButton)
         {
             itemsCounterButton.Content = itemsCounter.ToString();
+             
         }
         public static void ChangeWindowToCart()
         {

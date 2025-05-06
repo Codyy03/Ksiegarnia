@@ -64,7 +64,7 @@
                 <!-- Ustawienie MinWidth zapewnia, że wyszukiwarka się nie skurczy poniżej ustalonej wartości -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBox x:Name="SearchBox" Style="{StaticResource SearchBoxStyle}" TextChanged="SearchBox_TextChanged" MinWidth="400"/>
-                    <Button Style="{StaticResource CartActionButtonStyle}" Content="Wyszukaj" Width="89" FontWeight="Bold" FontSize="14"/>
+                    <Button x:Name="findAllBooks" Style="{StaticResource CartActionButtonStyle}" Content="Wyszukaj" Width="89" FontWeight="Bold" FontSize="14" Click="findAllBooks_Click"/>
                 </StackPanel>
             </StackPanel>
             <!-- Row 1: Obszar nagłówkowy (reklama i ukryta lista) -->

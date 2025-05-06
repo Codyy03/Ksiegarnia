@@ -1,2 +1,29 @@
 .vs/
 Migrations/
+
+# Foldery kompilacyjne
+bin/
+obj/
+
+# Pliki tymczasowe Visual Studio
+*.suo
+*.user
+*.rsuser
+*.vspscc
+*.vssscc
+*.cache
+*.db
+*.opendb
+*.log
+
+# Pliki DLL
+*.dll
+
+# Pliki generowane automatycznie
+*.pdb
+*.ilk
+
+# Pliki konfiguracyjne użytkownika
+.vscode/
+.idea/
+

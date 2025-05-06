@@ -42,6 +42,7 @@ namespace Ksiegarnia
             {
                 Book book = (Book)button.DataContext;
                 ShoppingCart.books.Remove(book);
+                ShoppingCart.itemsCounter--;
                 totalPrice -= book.Price;
                 AllBooksPrice();
             }

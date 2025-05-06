@@ -7,18 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Windows\AllBooksFound.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\BookDetailsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\DeliveryAndPayment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\ShoopingCartWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\UserPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Windows\AllBooksFound.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\DeliveryAndPayment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ShoopingCartWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\UserPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

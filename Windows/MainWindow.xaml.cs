@@ -1,8 +1,9 @@
 ﻿using Ksiegarnia.Entities;
+using Ksiegarnia.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Ksiegarnia
             debounceTimer = new();
             debounceTimer.Interval = TimeSpan.FromSeconds(1f); // opóźnienie o 1 sekunde
             debounceTimer.Tick += DebounceTimer_Tick;
-      
+
 
             using (BookstoreContex contex = new BookstoreContex(ContextOptions()))
             {
@@ -36,12 +37,12 @@ namespace Ksiegarnia
 
 
                 Random random = new Random();
-                for(int i=0; i<3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     int randomBookIndex = random.Next(0, books.Count());
                     randomBooks.Add(books[randomBookIndex]);
                     books.RemoveAt(randomBookIndex);
-                    
+
                 }
                 RandomBooks.ItemsSource = new ObservableCollection<Book>(randomBooks);
             }
@@ -51,7 +52,7 @@ namespace Ksiegarnia
         {
             debounceTimer.Stop();
             string searchText = SearchBox.Text.Trim().ToLower();
-           
+
             using (BookstoreContex context = new BookstoreContex(ContextOptions()))
             {
                 if (string.IsNullOrEmpty(searchText))
@@ -71,7 +72,7 @@ namespace Ksiegarnia
 
                         if (filteredBooks.Any())
                         {
-                            BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks);
+                            BooksList.ItemsSource = new ObservableCollection<Book>(filteredBooks).Take(5);
                             BooksList.Visibility = Visibility.Visible;
 
                             // Ukrywamy reklamę, gdy pojawiają się wyniki wyszukiwania
@@ -125,7 +126,7 @@ namespace Ksiegarnia
             SelectedBook(RandomBooks);
         }
 
-        private void SelectedBook(ListView listView)
+        public void SelectedBook(ListView listView)
         {
             Book selectedBook = listView.SelectedItem as Book;
             if (selectedBook != null)
@@ -138,12 +139,27 @@ namespace Ksiegarnia
         }
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-   
+            ShowUserPanel(this);
         }
 
         private void itemsInCartCounter_Click(object sender, RoutedEventArgs e)
         {
             ShoppingCart.ChangeWindowToCart();
+        }
+
+        private void findAllBooks_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(SearchBox.Text) || BooksList.ItemsSource==null)
+                return;
+
+            AllBooksFound allBooksFound = new(BooksList);
+            allBooksFound.Show();
+        }
+        public void ShowUserPanel(Window window)
+        {
+            UserPanel userPanel = new UserPanel(this);
+            userPanel.Show();
+            window.Close();
         }
     }
 }
