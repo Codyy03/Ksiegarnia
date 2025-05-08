@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 
 namespace Ksiegarnia
@@ -30,11 +31,7 @@ namespace Ksiegarnia
             debounceTimer.Interval = TimeSpan.FromSeconds(1f); // opóźnienie o 1 sekunde
             debounceTimer.Tick += DebounceTimer_Tick;
 
-
-            using (BookstoreContex contex = new BookstoreContex(ContextOptions()))
-            {
-                var books = contex.Books.Include(b => b.Author).ToList();
-
+                var books = BookstoreContex.context.Books.Include(b => b.Author).ToList();
 
                 Random random = new Random();
                 for (int i = 0; i < 3; i++)
@@ -45,7 +42,7 @@ namespace Ksiegarnia
 
                 }
                 RandomBooks.ItemsSource = new ObservableCollection<Book>(randomBooks);
-            }
+            
             ShoppingCart.AddBookToCart(itemsInCartCounter);
         }
         private void DebounceTimer_Tick(object sender, EventArgs e)
@@ -53,8 +50,6 @@ namespace Ksiegarnia
             debounceTimer.Stop();
             string searchText = SearchBox.Text.Trim().ToLower();
 
-            using (BookstoreContex context = new BookstoreContex(ContextOptions()))
-            {
                 if (string.IsNullOrEmpty(searchText))
                 {
                     AdvertisementImage.Visibility = Visibility.Visible;
@@ -65,7 +60,7 @@ namespace Ksiegarnia
                 {
                     try
                     {
-                        var filteredBooks = context.Books
+                        var filteredBooks = BookstoreContex.context.Books
                             .Include(b => b.Author)
                             .Where(b => b.Title.ToLower().Contains(searchText))
                             .ToList();
@@ -90,7 +85,7 @@ namespace Ksiegarnia
                         MessageBox.Show("Błąd podczas wyszukiwania: " + ex.Message);
                     }
                 }
-            }
+            
         }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -102,25 +97,6 @@ namespace Ksiegarnia
         {
             SelectedBook(BooksList);
         }
-        private DbContextOptions<BookstoreContex> ContextOptions()
-        {
-            string path = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName);
-            var configurationBuilder = new ConfigurationBuilder()
-                .SetBasePath(path)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-
-            var connectionString = configurationBuilder.GetConnectionString("DefaultConnection");
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                throw new Exception("Connection string 'DefaultConnection' is null or empty.");
-            }
-
-            var optionsBuilder = new DbContextOptionsBuilder<BookstoreContex>();
-            optionsBuilder.UseNpgsql(connectionString); // Konfiguracja połączenia do PostgreSQL
-            return optionsBuilder.Options;
-        }
-
         private void RandomBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedBook(RandomBooks);
@@ -162,4 +138,5 @@ namespace Ksiegarnia
             window.Close();
         }
     }
+   
 }

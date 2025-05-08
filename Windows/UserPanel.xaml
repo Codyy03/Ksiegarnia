@@ -29,13 +29,13 @@
                     <!-- Imię -->
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Imię:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtImie" Grid.Row="0" Grid.Column="1" 
+                    <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Nazwisko -->
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Nazwisko:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtNazwisko" Grid.Row="1" Grid.Column="1" 
+                    <TextBox x:Name="txtSurname" Grid.Row="1" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Email -->
@@ -47,7 +47,7 @@
                     <!-- Numer telefonu -->
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Numer telefonu:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtTelefon" Grid.Row="3" Grid.Column="1" 
+                    <TextBox x:Name="txtPhoneNumber" Grid.Row="3" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
                 </Grid>
             </GroupBox>
@@ -70,31 +70,31 @@
                     <!-- Miejscowość -->
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Miejscowość:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtMiasto" Grid.Row="0" Grid.Column="1" 
+                    <TextBox x:Name="txtCity" Grid.Row="0" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Ulica -->
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Ulica:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtUlica" Grid.Row="1" Grid.Column="1" 
+                    <TextBox x:Name="txtStreet" Grid.Row="1" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Numer domu -->
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Numer domu:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtNumerDomu" Grid.Row="2" Grid.Column="1" 
+                    <TextBox x:Name="txtHomeNumber" Grid.Row="2" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Numer mieszkania -->
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Numer mieszkania:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtNumerMieszkania" Grid.Row="3" Grid.Column="1" 
+                    <TextBox x:Name="txtApartmentNumber" Grid.Row="3" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
 
                     <!-- Kod pocztowy -->
                     <TextBlock Grid.Row="4" Grid.Column="0" Text="Kod pocztowy:" 
                                Style="{StaticResource LabelStyle}"/>
-                    <TextBox x:Name="txtKodPocztowy" Grid.Row="4" Grid.Column="1" 
+                    <TextBox x:Name="txtZipCode" Grid.Row="4" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
                 </Grid>
             </GroupBox>

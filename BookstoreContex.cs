@@ -9,8 +9,9 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Ksiegarnia
 {
-    class BookstoreContex : DbContext
+    public class BookstoreContex : DbContext
     {
+        public static BookstoreContex context = new BookstoreContex(ConnectionStringManager.ContextOptions());
         private readonly string connectionString;
         public BookstoreContex(DbContextOptions<BookstoreContex> options) : base(options) { }
         public BookstoreContex(string connectionString)
@@ -19,8 +20,9 @@ namespace Ksiegarnia
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<Address> Address { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -104,7 +106,18 @@ namespace Ksiegarnia
             .HasOne(b => b.Author)
             .WithMany()
             .HasForeignKey("AuthorID");
+
+            modelBuilder.Entity<Customer>()
+        .HasOne(c => c.Address)
+        .WithOne() // Adres należy do jednego klienta
+        .HasForeignKey<Customer>(c => c.AddressID); // Klucz obcy w tabeli Klienci
+
+            modelBuilder.Entity<Address>()
+       .HasMany(a => a.Customers)
+       .WithOne(c => c.Address)
+       .HasForeignKey(c => c.AddressID);
         }
+
     }
     public class BookstoreContexFactory : IDesignTimeDbContextFactory<BookstoreContex>
     {

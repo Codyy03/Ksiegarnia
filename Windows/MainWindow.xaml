@@ -4,10 +4,11 @@
         xmlns:local="clr-namespace:Ksiegarnia.MarkupExtensions"
         Title="MainWindow"
         Height="850" Width="1100" 
-        WindowStartupLocation="Manual">
+        WindowStartupLocation="Manual"
+        >
     <!-- ScrollViewer opakowujący całą zawartość -->
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid Margin="0" Cursor="">
+        <Grid Margin="0" Cursor="" Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <!-- Pasek górny -->
@@ -18,8 +19,9 @@
                 <RowDefinition Height="*" />
                 <!-- Nagłówek i losowe książki -->
             </Grid.RowDefinitions>
+
             <!-- Row 0: Pasek górny (nagłówek z przyciskiem koszyka) -->
-            <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="66">
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="66" Name="TopBar">
                 <StackPanel.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#FF2C2C2C" Offset="0"/>
@@ -27,50 +29,70 @@
                     </LinearGradientBrush>
                 </StackPanel.Background>
 
-                <Grid Cursor="Hand">
+                <Grid Cursor="Hand" Name="TopBarGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <!-- Przycisk użytkownika po lewej -->
-                        <ColumnDefinition Width="auto" />
-                        <!-- Przycisk koszyka po prawej -->
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <Button Content="Witaj, Jan!"
-        Style="{StaticResource UserButtonStyle}"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        Margin="20,0,0,0"
-        Grid.Column="0"
-        Click="UserButton_Click"
-        >
-                    </Button>
-                    <!-- Przyciski koszyka wyrównane do prawej strony -->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand">
+                            Style="{StaticResource UserButtonStyle}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0"
+                            Grid.Column="0"
+                            Click="UserButton_Click"
+                            Name="UserButton"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand" Name="CartPanel">
                         <Button x:Name="itemsInCartCounter"
-                    Style="{StaticResource CartButtonStyle}"
-                    Content="0"
-                    Height="55"
-                    Width="61" Cursor="Hand" Margin="0,5,50,0" Click="itemsInCartCounter_Click"/>
+                                Style="{StaticResource CartButtonStyle}"
+                                Content="0"
+                                Height="55"
+                                Width="61" 
+                                Cursor="Hand" 
+                                Margin="0,5,50,0" 
+                                Click="itemsInCartCounter_Click"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
 
+            <!-- Row 1: Powitanie i wyszukiwarka -->
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,20,20,20" MinWidth="300" Name="SearchPanel">
+                <TextBlock Text="Wyszukaj książkę..." 
+                           Style="{StaticResource PlaceholderTextStyle}" 
+                           HorizontalAlignment="Left" 
+                           Margin="10,0,0,5" 
+                           Name="SearchLabel"/>
 
-
-            <!-- Row 0: Powitanie i wyszukiwarka -->
-            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0" Width="980" MinWidth="980">
-                <!-- minimalna szerokość, aby nie kurczyła się -->
-                <TextBlock Text="Wyszukaj książkę..." Style="{StaticResource PlaceholderTextStyle}" HorizontalAlignment="Left" Margin="55,0,0,5" />
-                <!-- Ustawienie MinWidth zapewnia, że wyszukiwarka się nie skurczy poniżej ustalonej wartości -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBox x:Name="SearchBox" Style="{StaticResource SearchBoxStyle}" TextChanged="SearchBox_TextChanged" MinWidth="400"/>
-                    <Button x:Name="findAllBooks" Style="{StaticResource CartActionButtonStyle}" Content="Wyszukaj" Width="89" FontWeight="Bold" FontSize="14" Click="findAllBooks_Click"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Name="SearchBoxPanel">
+                    <TextBox x:Name="SearchBox" 
+                             Style="{StaticResource SearchBoxStyle}" 
+                             TextChanged="SearchBox_TextChanged" 
+                             MinWidth="200"
+                             Width="300"/>
+                    <Button x:Name="findAllBooks" 
+                            Style="{StaticResource CartActionButtonStyle}" 
+                            Content="Wyszukaj" 
+                            Width="89" 
+                            FontWeight="Bold" 
+                            FontSize="14" 
+                            Click="findAllBooks_Click"/>
                 </StackPanel>
             </StackPanel>
-            <!-- Row 1: Obszar nagłówkowy (reklama i ukryta lista) -->
-            <Grid Grid.Row="2">
-                <Image x:Name="AdvertisementImage" Source="{local:DynamicImageSource advertisement.png}" Stretch="Fill" HorizontalAlignment="Center" Width="600" Height="250" Margin="0,25,0,0" />
-                <ListView x:Name="BooksList" Visibility="Hidden" Style="{StaticResource BooksListViewStyle}" SelectionChanged="BooksList_SelectionChanged">
+
+            <!-- Row 2: Obszar nagłówkowy (reklama i ukryta lista) -->
+            <Grid Grid.Row="2" Name="AdGrid">
+                <Viewbox Stretch="Uniform" MaxHeight="250" HorizontalAlignment="Center" Name="AdViewbox">
+                    <Image x:Name="AdvertisementImage" 
+                           Source="{local:DynamicImageSource advertisement.png}" 
+                           Stretch="None"/>
+                </Viewbox>
+
+                <ListView x:Name="BooksList" 
+                          Visibility="Hidden" 
+                          Style="{StaticResource BooksListViewStyle}" 
+                          SelectionChanged="BooksList_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center" />
@@ -89,14 +111,24 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
-            <!-- Row 2: Nagłówek i losowe książki -->
-            <Grid Grid.Row="3" Margin="10">
+
+            <!-- Row 3: Nagłówek i losowe książki -->
+            <Grid Grid.Row="3" Margin="10" Name="BooksGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Zobacz wybrane produkty" Style="{StaticResource HeaderTextStyle}" Grid.Row="0" />
-                <ListView x:Name="RandomBooks" Grid.Row="1" Style="{StaticResource BooksListViewStyle}" SelectionChanged="RandomBooks_SelectionChanged">
+
+                <TextBlock Text="Zobacz wybrane produkty" 
+                           Style="{StaticResource HeaderTextStyle}" 
+                           Grid.Row="0" 
+                           Name="BooksHeader"/>
+
+                <ListView x:Name="RandomBooks" 
+                          Grid.Row="1" 
+                          Style="{StaticResource BooksListViewStyle}" 
+                          SelectionChanged="RandomBooks_SelectionChanged"
+                          >
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel HorizontalAlignment="Center" />

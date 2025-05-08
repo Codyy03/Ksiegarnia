@@ -22,7 +22,7 @@ namespace Ksiegarnia
     public partial class BookDetailsWindow : Window
     {
         Book book = new Book();
-        MainWindow mainWindow = new MainWindow();
+      
         public BookDetailsWindow(Book book)
         {
             InitializeComponent();
@@ -58,14 +58,18 @@ namespace Ksiegarnia
         }
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = new MainWindow();
             mainWindow.ShowUserPanel(this);
+            mainWindow.Close();
         }
 
         private void BackToSearch_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = new MainWindow();
             mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
         }
+        
     }
 }

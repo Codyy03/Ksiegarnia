@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Ksiegarnia.Entities;
+using Ksiegarnia.Windows;
 
 namespace Ksiegarnia
 {
@@ -21,15 +22,12 @@ namespace Ksiegarnia
     /// </summary>
     public partial class ShoopingCartWindow : Window
     {
-        decimal totalPrice = 0;
         public ShoopingCartWindow()
         {
             InitializeComponent();
 
             BooksInShoopingCart.ItemsSource = ShoppingCart.books;
 
-            foreach (Book book in ShoppingCart.books)
-                totalPrice += book.Price;
 
             AllBooksPrice();
 
@@ -43,12 +41,23 @@ namespace Ksiegarnia
                 Book book = (Book)button.DataContext;
                 ShoppingCart.books.Remove(book);
                 ShoppingCart.itemsCounter--;
-                totalPrice -= book.Price;
                 AllBooksPrice();
             }
         }
         private void AllBooksPrice() {
-            TotalPrice.Text = $"Kwota końcowa: {totalPrice.ToString()} zł";
-        } 
+            TotalPrice.Text = $"Kwota końcowa: {ShoppingCart.TotalPrice().ToString()} zł";
+        }
+
+        private void ShoppingSummary_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShoppingCart.itemsCounter == 0)
+                return;
+
+            DeliveryAndPayment deliveryAndPayment = new();
+
+            deliveryAndPayment.Show();
+            Close();
+
+        }
     }
 }

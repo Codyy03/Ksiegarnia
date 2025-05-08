@@ -26,6 +26,14 @@ namespace Ksiegarnia
             ShoopingCartWindow shoopingCartWindow = new ShoopingCartWindow();
             shoopingCartWindow.Show();
         }
+        public static decimal TotalPrice()
+        {
+            decimal totalPrice = 0;
+            foreach (Book book in books)
+                totalPrice += book.Price;
+
+            return totalPrice;
+        }
     }
 
 }

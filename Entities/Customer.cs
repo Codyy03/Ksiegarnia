@@ -21,12 +21,13 @@ namespace Ksiegarnia.Entities
         public string Email { get; set; }
         [Column("haslo")]
         public string Password { get; set; }
-        [Column("numer_telefonu")]
+        [Column("telefon")]
         public string PhoneNumber { get; set; }
 
+        [Column("ID_Adresu")]
         public int? AddressID { get; set; }
-        [ForeignKey("AddressID")]
-        public Address Address { get; set; }
 
+        [ForeignKey("AddressID")]
+        public virtual Address Address { get; set; }
     }
 }

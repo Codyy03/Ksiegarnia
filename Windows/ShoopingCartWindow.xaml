@@ -99,9 +99,8 @@
                    FontSize="16"
                    HorizontalAlignment="Center"
                    Margin="0,0,0,20"/>
-                <Button Content="Wybierz metodę dostawy"
-                Style="{StaticResource CartActionButtonStyle}" Margin="0,0,0,10"/>
-                <Button Content="Kup" Style="{StaticResource BuyButtonStyle}" />
+                <Button x:Name="ShoppingSummary" Content="Podsumowanie"
+                Style="{StaticResource CartActionButtonStyle}" Margin="0,0,0,10" Click="ShoppingSummary_Click"/>
             </StackPanel>
         </Border>
     </Grid>

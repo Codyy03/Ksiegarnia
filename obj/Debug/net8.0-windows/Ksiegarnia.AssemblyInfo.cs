@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ksiegarnia")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f172f307b472d1361bbfdff9d715fab6d6f214f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02c015ec1cfbeff410d9f09df3c51d296ed5e9e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ksiegarnia")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ksiegarnia")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

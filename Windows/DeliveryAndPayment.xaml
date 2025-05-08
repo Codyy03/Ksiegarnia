@@ -6,6 +6,43 @@
         xmlns:local="clr-namespace:Ksiegarnia.Windows"
         mc:Ignorable="d"
         Title="DeliveryAndPayment" Height="450" Width="800">
-    
+    <Grid Background="#F5F5F5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Lewy panel: Dane odbiorcy przesyłki -->
+        <StackPanel Grid.Column="0" Margin="20">
+            <TextBlock Text="Dane odbiorcy przesyłki" Style="{StaticResource HeaderTextStyle}"/>
+            <Border Style="{StaticResource PanelBorderStyle}">
+                <StackPanel>
+                    <!-- Uzupełniane danymi z bazy -->
+                    <TextBlock x:Name="txtRecipientName" Text="" Style="{StaticResource DetailTextStyle}"/>
+                    <TextBlock x:Name="txtRecipientAddress" Text="" Style="{StaticResource DetailTextStyle}"/>
+                    <TextBlock x:Name="txtRecipientPhone" Text="" Style="{StaticResource DetailTextStyle}"/>
+                    <TextBlock Text="Zmień dane" Style="{StaticResource LinkTextStyle}" MouseLeftButtonUp="EditShippingData"/>
+                </StackPanel>
+            </Border>
+            <TextBlock x:Name="txtNoData" Text="Dane są puste, wypełnij je" Style="{StaticResource HeaderTextStyle2 }" TextAlignment="Center" FontSize="20" Foreground="#FFCA3535" Visibility="Hidden"/>
+
+        </StackPanel>
+
+        <!-- Prawy panel: Podsumowanie koszyka i płatność BLIK -->
+        <StackPanel Grid.Column="1" Margin="20">
+            <TextBlock Text="Wartość koszyka" Style="{StaticResource SectionTitleStyle}" TextAlignment="Center"/>
+            <Border Style="{StaticResource PanelBorderStyle}">
+                <StackPanel Cursor="Hand">
+                    <TextBlock x:Name="txtPurchaseAmount" Text="Koszt produktów: 49,99 zł" Style="{StaticResource DetailTextStyle}" TextAlignment="Center"/>
+                    <TextBlock Text="Koszt dostawy: 10,00 zł" Style="{StaticResource DetailTextStyle}" TextAlignment="Center"/>
+
+                    <TextBlock x:Name="txtAllCost" Text="Razem: 49,99 zł" Style="{StaticResource HeaderTextStyle2}" FontSize="18" TextAlignment="Center"/>
+                    <Button Content="Kup" Style="{StaticResource BuyButtonStyle}" Margin="0,15,0,0"></Button>
+                </StackPanel>
+                
+            </Border>
+            
+        </StackPanel>
+    </Grid>
 </Window>
 
