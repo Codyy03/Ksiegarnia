@@ -33,10 +33,17 @@ namespace Ksiegarnia.Entities
         {
             get
             {
-                string basePath = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "covers");
-                return Path.Combine(basePath, CoverName);
+                // Jeśli CoverName jest pełnym URL-em, zwracamy go bez zmian
+                if (!string.IsNullOrWhiteSpace(CoverName) &&
+                    CoverName.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    
+                    return CoverName;
+                }
+                return CoverName;
             }
         }
+
 
         public string PriceWithZl
         {
@@ -49,6 +56,9 @@ namespace Ksiegarnia.Entities
 
         public Author Author { get; set; }
         public ICollection<BookAuthor> BookAuthors { get; set; }
+
+        public ICollection<OrdersBooks> OrderBooks { get; set; } = new List<OrdersBooks>();
+     
 
     }
 }

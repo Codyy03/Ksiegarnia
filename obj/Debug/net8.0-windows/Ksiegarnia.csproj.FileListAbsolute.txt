@@ -166,3 +166,7 @@ C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\UserPanel.bam
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\DeliveryAndPayment.g.cs
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\UserPanel.g.cs
 C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\DeliveryAndPayment.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\BookEditWindow.baml
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\BookEditWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\OrdersWindow.g.cs
+C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\Windows\OrdersWindow.baml

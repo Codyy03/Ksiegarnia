@@ -7,12 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Ksiegarnia
 {
     public static class ConnectionStringManager
     {
-        
+        public static string username;
+        public static bool isAdmin;
         public static DbContextOptions<BookstoreContex> ContextOptions()
         {
             string path = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName);
@@ -29,7 +31,27 @@ namespace Ksiegarnia
 
             var optionsBuilder = new DbContextOptionsBuilder<BookstoreContex>();
             optionsBuilder.UseNpgsql(connectionString); // Konfiguracja połączenia do PostgreSQL
+
+            // Rozbij connection string na fragmenty i pobierz wartość "Username"
+            var parameters = connectionString.Split(';');
+            username = parameters.FirstOrDefault(p => p.StartsWith("Username="))?.Split('=')[1];
             return optionsBuilder.Options;
+        }
+        // Nowa funkcja do dynamicznej zmiany kontekstu
+        public static void ReloadDatabaseContext()
+        {
+            isAdmin = !isAdmin;
+            var options = ContextOptions(); // Pobiera aktualne połączenie z pliku
+            BookstoreContex.context = new BookstoreContex(options); // Zmieniamy kontekst na nowy
+        }
+        public static void ChangeUserNameNotification(Button userButton)
+        {
+            switch (username)
+            {
+                case "postgres": userButton.Content = "Witaj, Admin"; break;
+                case "jan": userButton.Content = "Witaj, Jan"; break;
+                case "admin_user": userButton.Content = "Witaj, Admin"; break;
+            }
         }
     }
 }

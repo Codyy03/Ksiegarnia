@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Ksiegarnia.Entities;
-
+using System.Text.Json;
+using System.IO;
 namespace Ksiegarnia
 {
     public static class ShoppingCart
@@ -15,6 +16,8 @@ namespace Ksiegarnia
         public static int itemsCounter = 0;
 
         public static ObservableCollection<Book> books = new ObservableCollection<Book>();
+
+        public static bool booksWereLoad;
 
         public static void AddBookToCart(Button itemsCounterButton)
         {
@@ -34,6 +37,44 @@ namespace Ksiegarnia
 
             return totalPrice;
         }
+        public static void print()
+        {
+            MessageBox.Show(books[0].ID.ToString());
+        }
+        public static void SaveCartToJson()
+        {
+            try
+            {
+                string json = JsonSerializer.Serialize(books);
+                File.WriteAllText("cart.json", json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public static void LoadCartToJson()
+        {
+            try
+            {
+                if (File.Exists("cart.json"))
+                {
+                    string json = File.ReadAllText("cart.json");
+                    var loadedBooks = JsonSerializer.Deserialize<ObservableCollection<Book>>(json);
+                    books.Clear();
+                    itemsCounter = loadedBooks.Count;
+                    foreach (var book in loadedBooks)
+                    {
+                        books.Add(book);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd odczytu");
+            }
+        }
+
     }
 
 }

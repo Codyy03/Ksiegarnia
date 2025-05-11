@@ -32,5 +32,10 @@ namespace Ksiegarnia
                 context.Database.EnsureCreated();
             }
         }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            ShoppingCart.SaveCartToJson();
+            base.OnExit(e);
+        }
     }
 }

@@ -90,5 +90,39 @@ namespace Ksiegarnia.Windows
            
         }
 
+        private void userHistoryButon_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersWindow ordersWindow = new OrdersWindow();
+            ordersWindow.Show();
+            Close();
+        }
+
+        private void changeUserToAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Przeładowujemy kontekst na nowe połączenie
+                ConnectionStringManager.ReloadDatabaseContext();
+
+                // Sprawdzamy, czy możemy wykonać zapytanie (czy połączenie działa)
+                using (var context = new BookstoreContex(ConnectionStringManager.ContextOptions()))
+                {
+                    if (context.Database.CanConnect()) // Sprawdzenie czy połączenie jest możliwe
+                    {
+                        MessageBox.Show("Połączenie z bazą zostało odświeżone. Nowe dane użytkownika są aktywne.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Błąd: Nie udało się połączyć z bazą. Sprawdź dane użytkownika w pliku konfiguracyjnym.", "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Nie udało się połączyć z bazą. Sprawdź poprawność danych użytkownika w pliku konfiguracyjnym.\n\nSzczegóły: {ex.Message}",
+                                "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }

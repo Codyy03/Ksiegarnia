@@ -10,19 +10,22 @@ namespace Ksiegarnia.Entities
     [Table("Zamowienia_Ksiazki")]
     public class OrdersBooks
     {
-        public int ID { get; set; }
+        [Column("ID_Zamowienia")]
         public int OrderID { get; set; }
 
         [ForeignKey("OrderID")]
         public Orders Orders { get; set; }
 
+        [Column("ID_Ksiazki")]
         public int BookID { get; set; }
+
         [ForeignKey("BookID")]
         public Book Book { get; set; }
 
-        public int Amount { get; set; } = 1; // domyślna warotść to 1
+        [Column("ilosc")]
+        public int Amount { get; set; } = 1;
+
+        [Column("cena_ksiazki")]
         public decimal BookPrice { get; set; }
-
-
     }
 }

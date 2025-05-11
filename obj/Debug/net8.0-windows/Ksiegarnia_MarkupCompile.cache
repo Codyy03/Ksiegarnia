@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\sebas\Desktop\Ksiegarnia\App.xaml
-71620363632
+9-1293203416
 
-221980803086
-236-608404589
-Styles.xaml;Windows\AllBooksFound.xaml;Windows\BookDetailsWindow.xaml;Windows\DeliveryAndPayment.xaml;Windows\MainWindow.xaml;Windows\ShoopingCartWindow.xaml;Windows\UserPanel.xaml;
+29378419887
+236519713945
+Styles.xaml;Windows\AllBooksFound.xaml;Windows\BookDetailsWindow.xaml;Windows\BookEditWindow.xaml;Windows\DeliveryAndPayment.xaml;Windows\MainWindow.xaml;Windows\OrdersWindow.xaml;Windows\ShoopingCartWindow.xaml;Windows\UserPanel.xaml;
 
 False
 

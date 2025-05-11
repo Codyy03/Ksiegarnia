@@ -4,24 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Ksiegarnia.MarkupExtensions"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       
         mc:Ignorable="d"
         Title="AllBooksFound" Height="850" Width="1100">
+
     <Grid>
         <!-- ScrollViewer opakowujący całą zawartość -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Grid Margin="0" Cursor="">
+            <Grid Margin="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
                     <!-- Pasek górny -->
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
                     <!-- Powitanie i wyszukiwarka -->
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
                     <!-- Obszar nagłówkowy / reklama -->
-                    <RowDefinition Height="*" />
-                    <!-- Nagłówek i losowe książki -->
+                    <RowDefinition Height="*"/>
+                    <!-- Nagłówek i lista książek -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Przycisk Powrót -->
                 </Grid.RowDefinitions>
-                <!-- Row 0: Pasek górny (nagłówek z przyciskiem koszyka) -->
+
+                <!-- Row 0: Pasek górny -->
                 <StackPanel Grid.Row="0" VerticalAlignment="Top" Height="66">
                     <StackPanel.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -29,61 +32,66 @@
                             <GradientStop Color="#FF1F1F1F" Offset="1"/>
                         </LinearGradientBrush>
                     </StackPanel.Background>
-
                     <Grid Cursor="Hand">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <!-- Przycisk użytkownika po lewej -->
-                            <ColumnDefinition Width="auto" />
-                            <!-- Przycisk koszyka po prawej -->
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-
-                        <Button Content="Witaj, Jan!"
-     Style="{StaticResource UserButtonStyle}"
-     HorizontalAlignment="Left"
-     VerticalAlignment="Center"
-     Margin="20,0,0,0"
-     Grid.Column="0"
-     Click="UserButton_Click"
-     >
-                        </Button>
-                        <!-- Przyciski koszyka wyrównane do prawej strony -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Cursor="Hand">
+                        <Button x:Name="UserButton" Content="Witaj, Jan!"
+                                Style="{StaticResource UserButtonStyle}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="20,0,0,0"
+                                Grid.Column="0"
+                                Click="UserButton_Click"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
                             <Button x:Name="itemsInCartCounter"
-                 Style="{StaticResource CartButtonStyle}"
-                 Content="0"
-                 Height="55"
-                 Width="61" Cursor="Hand" Margin="0,5,50,0" Click="itemsInCartCounter_Click"/>
+                                    Style="{StaticResource CartButtonStyle}"
+                                    Content="0"
+                                    Height="55"
+                                    Width="61"
+                                    Margin="0,5,50,0"
+                                    Click="itemsInCartCounter_Click"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
 
-                <!-- Row 1: Nagłówek i losowe książki -->
-                <Grid Grid.Row="1" Margin="10">
+                <!-- Row 1: Nagłówek i lista książek -->
+                <Grid Grid.Row="3" Margin="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Znalezione produkty" Style="{StaticResource HeaderTextStyle}" Grid.Row="0" />
+                    <TextBlock Text="Znalezione produkty" Style="{StaticResource HeaderTextStyle}" Grid.Row="0"/>
                     <ListView x:Name="FoundBooks" Grid.Row="1" Style="{StaticResource BooksListViewStyle}" SelectionChanged="FoundBooks_SelectionChanged">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel HorizontalAlignment="Center" />
+                                <WrapPanel HorizontalAlignment="Center"/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Style="{StaticResource BookItemStyle}">
                                     <StackPanel HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding Title}" Style="{StaticResource BookTitleStyle}" />
-                                        <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
-                                        <TextBlock Text="{Binding Author.FullName}" Style="{StaticResource AuthorTextStyle}" />
+                                        <TextBlock Text="{Binding Title}" Style="{StaticResource BookTitleStyle}"/>
+                                        <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5"/>
+                                        <TextBlock Text="{Binding AuthorFullName}" Style="{StaticResource AuthorTextStyle}"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+
+                <!-- Row 2: Przycisk Powrót - zawsze pod ListView -->
+                <Button x:Name="BackToSearch"
+                        Grid.Row="4"
+                        Content="Powrót"
+                        Style="{StaticResource AddToCartButtonStyle}"
+                        HorizontalAlignment="Left"
+                        Width="185"
+                        Margin="10"
+                        Click="BackToSearch_Click" Cursor="Hand"/>
             </Grid>
         </ScrollViewer>
     </Grid>

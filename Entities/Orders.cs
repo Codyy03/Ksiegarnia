@@ -11,14 +11,23 @@ namespace Ksiegarnia.Entities
     public class Orders
     {
         public int ID { get; set; }
+
+        private DateTime _orderDate = DateTime.UtcNow;
         [Column("data_zamowienia")]
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate
+        {
+            get => _orderDate;
+            set => _orderDate = value.ToUniversalTime(); // Konwersja na UTC
+        }
         [Column("kwota")]
         public decimal PirceOrder { get; set; }
 
+        [Column("ID_Klienta")]
         public int CustomerID { get; set; }
         [ForeignKey("CustomerID")]
         public Customer Customer { get; set; }
+
+        public ICollection<OrdersBooks> OrderBooks { get; set; } = new List<OrdersBooks>();
 
     }
 }

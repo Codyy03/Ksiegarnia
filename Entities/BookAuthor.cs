@@ -11,16 +11,19 @@ namespace Ksiegarnia.Entities
     [Table("Autorzy_Ksiazki")]
     public class BookAuthor
     {
+        [Column("ID")]
+        public int ID { get; set; }
+
+        [Column("ID_Ksiazki")]
         public int BookID { get; set; }
         [ForeignKey("BookID")]
         public Book Book { get; set; }
-
+        [Column("ID_Autora")]
         public int AuthorID { get; set; }
         [ForeignKey("AuthorID")]
         public Author Author { get; set; }
 
-        public int Amount { get; set; }
-        public decimal BookPirce { get; set; }
+
 
 
 

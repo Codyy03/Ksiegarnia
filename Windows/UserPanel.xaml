@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ksiegarnia.Windows.UserPanel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="UserPanel" Height="680" Width="700"
+        Title="UserPanel" Height="800" Width="700"
         WindowStartupLocation="CenterScreen">
     <Border Style="{StaticResource FormContainerStyle}">
         <StackPanel>
@@ -96,11 +96,13 @@
                                Style="{StaticResource LabelStyle}"/>
                     <TextBox x:Name="txtZipCode" Grid.Row="4" Grid.Column="1" 
                              Style="{StaticResource TextBoxStyle}"/>
+                    
                 </Grid>
             </GroupBox>
 
             <!-- Przycisk na samym końcu formularza -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Cursor="Hand">
+                
                 <Button Content="Zapisz dane"
                         Style="{StaticResource ButtonConfirmStyle}"
                         Click="SaveData_Click"
@@ -109,6 +111,16 @@
                         Style="{StaticResource ButtonCancelStyle}"
                         Click="Cancel_Click"
                         Margin="10"/>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="userHistoryButon" Content="Zobacz historę zamówień"
+        Style="{StaticResource ButtonConfirmStyle}"
+        
+        Margin="10" Click="userHistoryButon_Click"/>
+                <Button x:Name="changeUserToAdmin" Content="Przełącz użytkownika "
+Style="{StaticResource ButtonConfirmStyle}"
+
+Margin="10" Background="#FFE6781B" Click="changeUserToAdmin_Click"/>
             </StackPanel>
         </StackPanel>
     </Border>

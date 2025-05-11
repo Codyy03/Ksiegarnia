@@ -24,6 +24,8 @@ namespace Ksiegarnia.Windows
         {
             InitializeComponent();
             FoundBooks.ItemsSource = listView.ItemsSource;
+            itemsInCartCounter.Content = ShoppingCart.itemsCounter.ToString();
+            ConnectionStringManager.ChangeUserNameNotification(UserButton);
         }
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -40,6 +42,13 @@ namespace Ksiegarnia.Windows
             MainWindow mainWindow = new MainWindow();
 
             mainWindow.SelectedBook(FoundBooks);
+        }
+
+        void BackToSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }

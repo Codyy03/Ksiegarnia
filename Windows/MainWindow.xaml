@@ -4,8 +4,8 @@
         xmlns:local="clr-namespace:Ksiegarnia.MarkupExtensions"
         Title="MainWindow"
         Height="850" Width="1100" 
-        WindowStartupLocation="Manual"
-        >
+        WindowStartupLocation="Manual">
+        
     <!-- ScrollViewer opakowujący całą zawartość -->
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid Margin="0" Cursor="" Name="MainGrid">
@@ -104,7 +104,16 @@
                                 <StackPanel HorizontalAlignment="Center">
                                     <TextBlock Text="{Binding Title}" Style="{StaticResource BookTitleStyle}" />
                                     <Image Source="{Binding CoverPath}" Width="150" Height="200" Stretch="Uniform" Margin="5" />
-                                    <TextBlock Text="{Binding Author.FullName}" Style="{StaticResource AuthorTextStyle}" />
+                                    <TextBlock Text="{Binding AuthorFullName}" Style="{StaticResource AuthorTextStyle}" />
+                                    <!-- Liczba egzemplarzy -->
+                                    <TextBlock Margin="5"
+                                      FontSize="14"
+                                      FontWeight="Bold"
+                                      Foreground="#555555"
+                                      TextAlignment="Center">
+                                     <Run Text="Ilość: "/>
+                                     <Run Text="{Binding Count}" />      
+                                    </TextBlock>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>

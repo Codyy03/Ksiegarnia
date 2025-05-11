@@ -22,6 +22,7 @@ namespace Ksiegarnia
         public DbSet<Book> Books { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<OrdersBooks> OrdersBooks { get; set; }
         public DbSet<Address> Address { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -50,55 +51,55 @@ namespace Ksiegarnia
                     CoverName = "pan_tadeusz.jpg",
                     AuthorID = 1
                 },
-                new Book
-                {
-                    ID = 2,
-                    Title = "To",
-                    Genre = "Horror",
-                    Description = "Przerażająca historia o kosmicznym złu w małym miasteczku.",
-                    Price = 49.99m,
-                    Language = "Angielski",
-                    Pages = 512,
-                    CoverName = "to.jpg",
-                    AuthorID = 2
-                },
-                new Book
-                {
-                    ID = 3,
-                    Title = "Harry Potter i Kamień Filozoficzny",
-                    Genre = "Fantasy",
-                    Description = "Pierwsza część serii o młodym czarodzieju.",
-                    Price = 45.50m,
-                    Language = "Polski",
-                    Pages = 328,
-                    CoverName = "harry_potter.jpg",
-                    AuthorID = 3
-                },
-                new Book
-                {
-                    ID = 4,
-                    Title = "Ostatnie życzenie",
-                    Genre = "Fantasy",
-                    Description = "Pierwszy zbiór opowiadań o Wiedźminie Geralcie.",
-                    Price = 42.00m,
-                    Language = "Polski",
-                    Pages = 288,
-                    CoverName = "wiedzmin.jpg",
-                    AuthorID = 4
-                },
-                new Book
-                {
-                    ID = 5,
-                    Title = "Gra o tron",
-                    Genre = "Fantasy",
-                    Description = "Pierwszy tom sagi 'Pieśni Lodu i Ognia'.",
-                    Price = 55.00m,
-                    Language = "Polski",
-                    Pages = 512,
-                    CoverName = "gra_o_tron.jpg",
-                    AuthorID = 5
-                }
-            );
+        new Book
+        {
+            ID = 2,
+            Title = "To",
+            Genre = "Horror",
+            Description = "Przerażająca historia o kosmicznym złu w małym miasteczku.",
+            Price = 49.99m,
+            Language = "Angielski",
+            Pages = 512,
+            CoverName = "to.jpg",
+            AuthorID = 2
+        },
+        new Book
+        {
+            ID = 6,
+            Title = "Lalka",
+            Genre = "Powieść",
+            Description = "Klasyczna powieść Bolesława Prusa.",
+            Price = 49.99m,
+            Language = "Polski",
+            Pages = 640,
+            CoverName = "lalka.jpg",
+            AuthorID = 41
+        },
+        new Book
+        {
+            ID = 7,
+            Title = "1984",
+            Genre = "Dystopia",
+            Description = "Powieść George'a Orwella o totalitarnym państwie.",
+            Price = 39.99m,
+            Language = "Angielski",
+            Pages = 328,
+            CoverName = "1984.jpg",
+            AuthorID = 42
+        },
+        new Book
+        {
+            ID = 8,
+            Title = "Mistrz i Małgorzata",
+            Genre = "Powieść",
+            Description = "Rosyjska powieść Michaiła Bułhakowa.",
+            Price = 55.00m,
+            Language = "Rosyjski",
+            Pages = 384,
+            CoverName = "mistrz_malgorzata.jpg",
+            AuthorID = 43
+        }
+    );
             modelBuilder.Entity<BookAuthor>()
                 .HasKey(ba => new { ba.BookID, ba.AuthorID }); // Klucz złożony
 
@@ -116,7 +117,23 @@ namespace Ksiegarnia
        .HasMany(a => a.Customers)
        .WithOne(c => c.Address)
        .HasForeignKey(c => c.AddressID);
+
+            modelBuilder.Entity<OrdersBooks>()
+      .HasKey(ob => new { ob.BookID, ob.OrderID }); // klucz złożony
+
+            modelBuilder.Entity<OrdersBooks>()
+                .HasOne(ob => ob.Book)
+                .WithMany(b => b.OrderBooks)
+                .HasForeignKey(ob => ob.BookID)
+                .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli książka znika
+
+            modelBuilder.Entity<OrdersBooks>()
+                .HasOne(ob => ob.Orders)
+                .WithMany(o => o.OrderBooks)
+                .HasForeignKey(ob => ob.OrderID)
+                .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli zamówienie znika
         }
+
 
     }
     public class BookstoreContexFactory : IDesignTimeDbContextFactory<BookstoreContex>
