@@ -38,7 +38,7 @@ namespace Ksiegarnia
             base.OnModelCreating(modelBuilder);
 
             // Dodawanie danych początkowych do tabeli "Ksiazki"
-            modelBuilder.Entity<Book>().HasData(
+             modelBuilder.Entity<Book>().HasData(
                 new Book
                 {
                     ID = 1,
@@ -51,87 +51,87 @@ namespace Ksiegarnia
                     CoverName = "pan_tadeusz.jpg",
                     AuthorID = 1
                 },
-        new Book
-        {
-            ID = 2,
-            Title = "To",
-            Genre = "Horror",
-            Description = "Przerażająca historia o kosmicznym złu w małym miasteczku.",
-            Price = 49.99m,
-            Language = "Angielski",
-            Pages = 512,
-            CoverName = "to.jpg",
-            AuthorID = 2
-        },
-        new Book
-        {
-            ID = 6,
-            Title = "Lalka",
-            Genre = "Powieść",
-            Description = "Klasyczna powieść Bolesława Prusa.",
-            Price = 49.99m,
-            Language = "Polski",
-            Pages = 640,
-            CoverName = "lalka.jpg",
-            AuthorID = 41
-        },
-        new Book
-        {
-            ID = 7,
-            Title = "1984",
-            Genre = "Dystopia",
-            Description = "Powieść George'a Orwella o totalitarnym państwie.",
-            Price = 39.99m,
-            Language = "Angielski",
-            Pages = 328,
-            CoverName = "1984.jpg",
-            AuthorID = 42
-        },
-        new Book
-        {
-            ID = 8,
-            Title = "Mistrz i Małgorzata",
-            Genre = "Powieść",
-            Description = "Rosyjska powieść Michaiła Bułhakowa.",
-            Price = 55.00m,
-            Language = "Rosyjski",
-            Pages = 384,
-            CoverName = "mistrz_malgorzata.jpg",
-            AuthorID = 43
-        }
-    );
-            modelBuilder.Entity<BookAuthor>()
-                .HasKey(ba => new { ba.BookID, ba.AuthorID }); // Klucz złożony
+                new Book
+                {
+                    ID = 2,
+                    Title = "To",
+                    Genre = "Horror",
+                    Description = "Przerażająca historia o kosmicznym złu w małym miasteczku.",
+                    Price = 49.99m,
+                    Language = "Angielski",
+                    Pages = 512,
+                    CoverName = "to.jpg",
+                    AuthorID = 2
+                },
+                new Book
+                {
+                    ID = 6,
+                    Title = "Lalka",
+                    Genre = "Powieść",
+                    Description = "Klasyczna powieść Bolesława Prusa.",
+                    Price = 49.99m,
+                    Language = "Polski",
+                    Pages = 640,
+                    CoverName = "lalka.jpg",
+                    AuthorID = 41
+                },
+                new Book
+                {
+                    ID = 7,
+                    Title = "1984",
+                    Genre = "Dystopia",
+                    Description = "Powieść George'a Orwella o totalitarnym państwie.",
+                    Price = 39.99m,
+                    Language = "Angielski",
+                    Pages = 328,
+                    CoverName = "1984.jpg",
+                    AuthorID = 42
+                },
+                new Book
+                {
+                    ID = 8,
+                    Title = "Mistrz i Małgorzata",
+                    Genre = "Powieść",
+                    Description = "Rosyjska powieść Michaiła Bułhakowa.",
+                    Price = 55.00m,
+                    Language = "Rosyjski",
+                    Pages = 384,
+                    CoverName = "mistrz_malgorzata.jpg",
+                    AuthorID = 43
+                }
+            );
+         modelBuilder.Entity<BookAuthor>()
+         .HasKey(ba => new { ba.BookID, ba.AuthorID }); // Klucz złożony
 
-            modelBuilder.Entity<Book>()
-            .HasOne(b => b.Author)
-            .WithMany()
-            .HasForeignKey("AuthorID");
+         modelBuilder.Entity<Book>()
+         .HasOne(b => b.Author)
+         .WithMany()
+         .HasForeignKey("AuthorID");
 
-            modelBuilder.Entity<Customer>()
-        .HasOne(c => c.Address)
-        .WithOne() // Adres należy do jednego klienta
-        .HasForeignKey<Customer>(c => c.AddressID); // Klucz obcy w tabeli Klienci
+         modelBuilder.Entity<Customer>()
+         .HasOne(c => c.Address)
+         .WithOne() // Adres należy do jednego klienta
+         .HasForeignKey<Customer>(c => c.AddressID); // Klucz obcy w tabeli Klienci
 
-            modelBuilder.Entity<Address>()
-       .HasMany(a => a.Customers)
-       .WithOne(c => c.Address)
-       .HasForeignKey(c => c.AddressID);
+         modelBuilder.Entity<Address>()
+         .HasMany(a => a.Customers)
+         .WithOne(c => c.Address)
+         .HasForeignKey(c => c.AddressID);
 
-            modelBuilder.Entity<OrdersBooks>()
-      .HasKey(ob => new { ob.BookID, ob.OrderID }); // klucz złożony
+         modelBuilder.Entity<OrdersBooks>()
+         .HasKey(ob => new { ob.BookID, ob.OrderID }); // klucz złożony
 
-            modelBuilder.Entity<OrdersBooks>()
-                .HasOne(ob => ob.Book)
-                .WithMany(b => b.OrderBooks)
-                .HasForeignKey(ob => ob.BookID)
-                .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli książka znika
+         modelBuilder.Entity<OrdersBooks>()
+         .HasOne(ob => ob.Book)
+         .WithMany(b => b.OrderBooks)
+         .HasForeignKey(ob => ob.BookID)
+         .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli książka znika
 
-            modelBuilder.Entity<OrdersBooks>()
-                .HasOne(ob => ob.Orders)
-                .WithMany(o => o.OrderBooks)
-                .HasForeignKey(ob => ob.OrderID)
-                .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli zamówienie znika
+         modelBuilder.Entity<OrdersBooks>()
+         .HasOne(ob => ob.Orders)
+         .WithMany(o => o.OrderBooks)
+         .HasForeignKey(ob => ob.OrderID)
+         .OnDelete(DeleteBehavior.Cascade); // usuwaj powiązanie jeśli zamówienie znika
         }
 
 

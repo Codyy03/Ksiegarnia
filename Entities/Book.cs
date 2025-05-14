@@ -37,13 +37,12 @@ namespace Ksiegarnia.Entities
                 if (!string.IsNullOrWhiteSpace(CoverName) &&
                     CoverName.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 {
-                    
+
                     return CoverName;
                 }
                 return CoverName;
             }
         }
-
 
         public string PriceWithZl
         {
@@ -53,12 +52,11 @@ namespace Ksiegarnia.Entities
             }
         }
 
-
         public Author Author { get; set; }
         public ICollection<BookAuthor> BookAuthors { get; set; }
 
         public ICollection<OrdersBooks> OrderBooks { get; set; } = new List<OrdersBooks>();
-     
+
 
     }
 }

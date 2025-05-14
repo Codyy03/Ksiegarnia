@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Ksiegarnia.BookDetailsWindow"
         Title="BookDetailsWindow" Height="850" Width="1100"
+        MinWidth="1040"
         WindowStartupLocation="Manual" >
     <!-- Opakowanie całości w ScrollViewer umożliwia przewijanie poziome i pionowe -->
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -40,7 +41,7 @@
                             Click="UserButton_Click"/>
 
                     <!-- Po prawej: przycisk koszyka -->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" >
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" >
                         <Button x:Name="itemsInCartCounter"
                                 Style="{StaticResource CartButtonStyle}"
                                 Content="0"

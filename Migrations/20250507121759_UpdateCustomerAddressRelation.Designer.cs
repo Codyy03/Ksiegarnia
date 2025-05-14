@@ -3,6 +3,7 @@ using System;
 using Ksiegarnia;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Ksiegarnia.Migrations
 {
     [DbContext(typeof(BookstoreContex))]
-    partial class BookstoreContexModelSnapshot : ModelSnapshot
+    [Migration("20250507121759_UpdateCustomerAddressRelation")]
+    partial class UpdateCustomerAddressRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,55 +175,55 @@ namespace Ksiegarnia.Migrations
                         },
                         new
                         {
-                            ID = 6,
-                            AuthorID = 41,
-                            CoverName = "lalka.jpg",
-                            Description = "Klasyczna powieść Bolesława Prusa.",
-                            Genre = "Powieść",
+                            ID = 3,
+                            AuthorID = 3,
+                            CoverName = "harry_potter.jpg",
+                            Description = "Pierwsza część serii o młodym czarodzieju.",
+                            Genre = "Fantasy",
                             Language = "Polski",
-                            Pages = 640,
-                            Price = 49.99m,
-                            Title = "Lalka"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            AuthorID = 42,
-                            CoverName = "1984.jpg",
-                            Description = "Powieść George'a Orwella o totalitarnym państwie.",
-                            Genre = "Dystopia",
-                            Language = "Angielski",
                             Pages = 328,
-                            Price = 39.99m,
-                            Title = "1984"
+                            Price = 45.50m,
+                            Title = "Harry Potter i Kamień Filozoficzny"
                         },
                         new
                         {
-                            ID = 8,
-                            AuthorID = 43,
-                            CoverName = "mistrz_malgorzata.jpg",
-                            Description = "Rosyjska powieść Michaiła Bułhakowa.",
-                            Genre = "Powieść",
-                            Language = "Rosyjski",
-                            Pages = 384,
+                            ID = 4,
+                            AuthorID = 4,
+                            CoverName = "wiedzmin.jpg",
+                            Description = "Pierwszy zbiór opowiadań o Wiedźminie Geralcie.",
+                            Genre = "Fantasy",
+                            Language = "Polski",
+                            Pages = 288,
+                            Price = 42.00m,
+                            Title = "Ostatnie życzenie"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            AuthorID = 5,
+                            CoverName = "gra_o_tron.jpg",
+                            Description = "Pierwszy tom sagi 'Pieśni Lodu i Ognia'.",
+                            Genre = "Fantasy",
+                            Language = "Polski",
+                            Pages = 512,
                             Price = 55.00m,
-                            Title = "Mistrz i Małgorzata"
+                            Title = "Gra o tron"
                         });
                 });
 
             modelBuilder.Entity("Ksiegarnia.Entities.BookAuthor", b =>
                 {
                     b.Property<int>("BookID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_Ksiazki");
+                        .HasColumnType("integer");
 
                     b.Property<int>("AuthorID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_Autora");
+                        .HasColumnType("integer");
 
-                    b.Property<int>("ID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID");
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("BookPirce")
+                        .HasColumnType("numeric");
 
                     b.HasKey("BookID", "AuthorID");
 
@@ -282,8 +285,7 @@ namespace Ksiegarnia.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
                     b.Property<int>("CustomerID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_Klienta");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp with time zone")
@@ -298,31 +300,6 @@ namespace Ksiegarnia.Migrations
                     b.HasIndex("CustomerID");
 
                     b.ToTable("Zamowienia");
-                });
-
-            modelBuilder.Entity("Ksiegarnia.Entities.OrdersBooks", b =>
-                {
-                    b.Property<int>("BookID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_Ksiazki");
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("integer")
-                        .HasColumnName("ID_Zamowienia");
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("integer")
-                        .HasColumnName("ilosc");
-
-                    b.Property<decimal>("BookPrice")
-                        .HasColumnType("numeric")
-                        .HasColumnName("cena_ksiazki");
-
-                    b.HasKey("BookID", "OrderID");
-
-                    b.HasIndex("OrderID");
-
-                    b.ToTable("Zamowienia_Ksiazki");
                 });
 
             modelBuilder.Entity("Ksiegarnia.Entities.Book", b =>
@@ -375,25 +352,6 @@ namespace Ksiegarnia.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Ksiegarnia.Entities.OrdersBooks", b =>
-                {
-                    b.HasOne("Ksiegarnia.Entities.Book", "Book")
-                        .WithMany("OrderBooks")
-                        .HasForeignKey("BookID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Ksiegarnia.Entities.Orders", "Orders")
-                        .WithMany("OrderBooks")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("Ksiegarnia.Entities.Address", b =>
                 {
                     b.Navigation("Customers");
@@ -407,13 +365,6 @@ namespace Ksiegarnia.Migrations
             modelBuilder.Entity("Ksiegarnia.Entities.Book", b =>
                 {
                     b.Navigation("BookAuthors");
-
-                    b.Navigation("OrderBooks");
-                });
-
-            modelBuilder.Entity("Ksiegarnia.Entities.Orders", b =>
-                {
-                    b.Navigation("OrderBooks");
                 });
 #pragma warning restore 612, 618
         }
