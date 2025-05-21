@@ -1,18 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace Ksiegarnia.Windows
 {
     /// <summary>
@@ -87,7 +78,7 @@ namespace Ksiegarnia.Windows
                 txtHomeNumber.Text = customer.Address.HomeNumber;
                 txtZipCode.Text = customer.Address.ZipCode;
             }
-           
+
         }
 
         private void userHistoryButon_Click(object sender, RoutedEventArgs e)
@@ -103,25 +94,43 @@ namespace Ksiegarnia.Windows
             {
                 // Przeładowujemy kontekst na nowe połączenie
                 ConnectionStringManager.ReloadDatabaseContext();
-
+               
                 // Sprawdzamy, czy możemy wykonać zapytanie (czy połączenie działa)
-                using (var context = new BookstoreContex(ConnectionStringManager.ContextOptions()))
-                {
-                    if (context.Database.CanConnect()) // Sprawdzenie czy połączenie jest możliwe
+               
+                    if (BookstoreContex.context.Database.CanConnect()) // Sprawdzenie czy połączenie jest możliwe
                     {
                         MessageBox.Show("Połączenie z bazą zostało odświeżone. Nowe dane użytkownika są aktywne.");
                     }
                     else
                     {
                         MessageBox.Show("Błąd: Nie udało się połączyć z bazą. Sprawdź dane użytkownika w pliku konfiguracyjnym.", "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                        ResetConfigurationToDefault();
+                        // Przeładowujemy kontekst na nowe połączenie
+                        ConnectionStringManager.ReloadDatabaseContext();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Nie udało się połączyć z bazą. Sprawdź poprawność danych użytkownika w pliku konfiguracyjnym.\n\nSzczegóły: {ex.Message}",
                                 "Błąd połączenia", MessageBoxButton.OK, MessageBoxImage.Error);
+                ResetConfigurationToDefault();
+                // Przeładowujemy kontekst na nowe połączenie
+                ConnectionStringManager.ReloadDatabaseContext();
             }
+        }
+        private void ResetConfigurationToDefault()
+        {
+            // Domyślna zawartość pliku konfiguracyjnego
+            string defaultJson = @"{
+              ""ConnectionStrings"": {
+                ""DefaultConnection"": ""Host=127.0.0.1;Port=5432;Database=Ksiegarnia;Username=postgres;Password=admin""
+              }
+            }";
+
+            string path = System.IO.Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName, "appsettings.json");
+
+            // Zapisujemy domyślną konfigurację do pliku
+            File.WriteAllText(path, defaultJson);
         }
 
     }

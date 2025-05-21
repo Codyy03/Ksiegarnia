@@ -29,7 +29,9 @@ namespace Ksiegarnia.Windows
         }
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UserPanel userPanel = new UserPanel(this);
+            userPanel.Show();
+            Close();
         }
         private void itemsInCartCounter_Click(object sender, RoutedEventArgs e)
         {

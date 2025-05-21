@@ -46,7 +46,9 @@ namespace Ksiegarnia
             try
             {
                 string json = JsonSerializer.Serialize(books);
-                File.WriteAllText("cart.json", json);
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "cart.json");
+                File.WriteAllText(path, json);
+
             }
             catch (Exception ex)
             {
@@ -57,15 +59,22 @@ namespace Ksiegarnia
         {
             try
             {
-                if (File.Exists("cart.json"))
+                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "cart.json");
+
+                if (File.Exists(path))  
                 {
-                    string json = File.ReadAllText("cart.json");
+                    string json = File.ReadAllText(path); 
                     var loadedBooks = JsonSerializer.Deserialize<ObservableCollection<Book>>(json);
-                    books.Clear();
-                    itemsCounter = loadedBooks.Count;
-                    foreach (var book in loadedBooks)
+
+                    if (loadedBooks != null)
                     {
-                        books.Add(book);
+                        books.Clear();
+                        itemsCounter = loadedBooks.Count;
+
+                        foreach (var book in loadedBooks)
+                        {
+                            books.Add(book);
+                        }
                     }
                 }
             }

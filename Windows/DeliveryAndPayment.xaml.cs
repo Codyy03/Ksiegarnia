@@ -83,6 +83,8 @@ namespace Ksiegarnia.Windows
             BookstoreContex.context.SaveChanges();
             ShoppingCart.books.Clear();
 
+            MessageBox.Show("Pomyślnie zakupiono");
+
             ShoppingCart.itemsCounter = 0;
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

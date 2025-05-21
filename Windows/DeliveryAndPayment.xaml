@@ -7,7 +7,7 @@
 
         MinWidth="900"
         mc:Ignorable="d"
-        Title="DeliveryAndPayment" Height="450" Width="900">
+        Title="Zamówienia" Height="450" Width="900">
     <Grid Background="#F5F5F5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

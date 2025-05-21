@@ -20,7 +20,7 @@ namespace Ksiegarnia.Windows
     /// </summary>
     public partial class BookEditWindow : Window
     {
-        Book book;
+        readonly Book book;
         public BookEditWindow(Book book)
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Ksiegarnia.Windows
             book_tagTextBox.Text = book.Genre;
             book_pagesTextBox.Text = book.Pages.ToString();
             book_priceTextBox.Text = book.Price.ToString();
-            book_languageTextBox.Text = book.Language.ToString();
+            book_languageTextBox.Text = book.Language;
         }
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
@@ -75,6 +75,12 @@ namespace Ksiegarnia.Windows
                     book.Pages = Convert.ToInt32(book_pagesTextBox.Text);
                 }
                 book.Genre = book_tagTextBox.Text;
+
+                if (string.IsNullOrEmpty(book_titleTextBox.Text) || string.IsNullOrEmpty(book_descriptionTextBox.Text) || string.IsNullOrEmpty(book_priceTextBox.Text) || string.IsNullOrEmpty(book_languageTextBox.Text) || string.IsNullOrEmpty(book_pagesTextBox.Text) || string.IsNullOrEmpty(book_pagesTextBox.Text) || string.IsNullOrEmpty(book_tagTextBox.Text))
+                {
+                    MessageBox.Show("Nieprawidłowe dane");
+                    return;
+                }
 
                 MessageBox.Show("Poprawinie edytowano");
                 BookstoreContex.context.SaveChanges();
