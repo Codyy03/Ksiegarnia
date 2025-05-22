@@ -8,12 +8,12 @@ C:\Users\sebas\Desktop\Ksiegarnia\obj\Debug\net8.0-windows\
 Ksiegarnia
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\sebas\Desktop\Ksiegarnia\App.xaml
 9-1293203416
 
 35-215713211
-236-608404589
+236519713945
 Styles.xaml;Windows\AllBooksFound.xaml;Windows\BookDetailsWindow.xaml;Windows\BookEditWindow.xaml;Windows\DeliveryAndPayment.xaml;Windows\MainWindow.xaml;Windows\OrdersWindow.xaml;Windows\ShoopingCartWindow.xaml;Windows\UserPanel.xaml;
 
 False

@@ -136,14 +136,4 @@ namespace Ksiegarnia
 
 
     }
-    public class BookstoreContexFactory : IDesignTimeDbContextFactory<BookstoreContex>
-    {
-        BookstoreContex IDesignTimeDbContextFactory<BookstoreContex>.CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<BookstoreContex>();
-            optionsBuilder.UseNpgsql("Host=127.0.0.1;Port=5433;Database=Ksiegarnia;Username=postgres;Password=admin");
-
-            return new BookstoreContex(optionsBuilder.Options);
-        }
-    }
 }

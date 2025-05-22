@@ -46,7 +46,11 @@ namespace Ksiegarnia
             try
             {
                 string json = JsonSerializer.Serialize(books);
+                string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
                 string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "cart.json");
+
+                if(!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+
                 File.WriteAllText(path, json);
 
             }

@@ -123,7 +123,7 @@ namespace Ksiegarnia.Windows
             // Domyślna zawartość pliku konfiguracyjnego
             string defaultJson = @"{
               ""ConnectionStrings"": {
-                ""DefaultConnection"": ""Host=127.0.0.1;Port=5432;Database=Ksiegarnia;Username=postgres;Password=admin""
+                ""DefaultConnection"": ""Host=127.0.0.1;Port=5433;Database=Ksiegarnia;Username=postgres;Password=admin""
               }
             }";
 
