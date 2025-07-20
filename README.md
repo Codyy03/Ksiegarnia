@@ -59,7 +59,7 @@ Przykład linku do okładki:
 - Connection string w `appsettings.json`  
 - Mapowanie encji EF Core z dekoratorami `[Table]`, `[Column]`
 
-## 🚀 Uruchomienie
+## Uruchomienie
 1. Skonfiguruj bazę PostgreSQL i uzupełnij `appsettings.json` z connection string.  
 2. Wykonaj migracje:  
    ```bash
